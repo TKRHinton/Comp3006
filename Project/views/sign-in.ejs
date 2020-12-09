@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Sign In </title>
+    <style>
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/CSS/sign.css">
+
+</head>
+
+<body>
+
+<div>
+    <a href="http://localhost:9000/home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+</div>
+
+<div class="center">
+    <form action="/signInAttempt" method="post">
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="userName" minlength="2" maxlength="28" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="userPassword" minlength="2" maxlength="28" required>
+
+
+            <button type="submit">Sign Up</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <a href="http://localhost:9000/home">
+                <button type="button" class="cancelbtn">Cancel</button></a>
+            <span class="psw">Don't have an account? <a href="http://localhost:9000/signUp">Sign Up</a></span>
+        </div>
+        <div id="res" class="alert <%= output.class %>">
+            <%= output.message %>
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+
+</body>
+
+</html>

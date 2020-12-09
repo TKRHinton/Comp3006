@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Sign In </title>
+    <style>
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/CSS/sign.css">
+
+</head>
+
+<body>
+
+<div>
+    <a href="http://localhost:9000/home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+</div>
+
+<div class="center">
+    <form action="/signUpAttempt" method="post">
+        <div class="container">
+            <label for="username"><b>Unique Username</b></label>
+            <input type="text" placeholder="Enter Username" name="userName" minlength="2" maxlength="28" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="userPassword" minlength="2" maxlength="28"
+                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Must include at least 1 uppercase character,lowercase character & number." required>
+
+            <label for="psw2"><b>Retype Password</b></label>
+            <input type="password" placeholder="Re-Enter Password" name="userPassword2" minlength="2" maxlength="28"
+                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Must include at least 1 uppercase character,lowercase character & number." required>
+
+            <button type="submit">Sign Up</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <a href="http://localhost:9000/home">
+            <button type="button" class="cancelbtn">Cancel</button></a>
+            <span class="psw">Already have an account? <a href="http://localhost:9000/signIn">Sign In</a></span>
+
+        </div>
+
+        <div id="res" class="alert <%= output.class %>">
+            <%= output.message %>
+        </div>
+    </form>
+    <div>
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Home </title>
+    <style>
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href=" /CSS/Nav.css">
+
+
+
+
+</head>
+
+
+
+<body>
+<div class="navbar">
+    <a href="#home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+    <a href="#home">Home</a>
+    <div class="dropdown">
+        <button style="font-size:32px; margin-left: 40px; font-weight: bold; color: #814bc6;
+        text-shadow: 2px 2px #4a0b77;" class="dropbtn">Reviews
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <div class="header">
+                <h2>Catagrories</h2>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h3>Genre</h3>
+                    <a href="#">Action</a>
+                    <a href="#">Adventure</a>
+                    <a href="#">Role-Playing</a>
+                    <a href="#">Simulation</a>
+                    <a href="#">Strategy</a>
+                    <a href="#">Sports</a>
+                </div>
+                <div class="column">
+                    <h3>Platform</h3>
+                    <a href="#">PS</a>
+                    <a href="#">Xbox</a>
+                    <a href="#">Nintendo</a>
+                    <a href="#">PC</a>
+                </div>
+
+                <div class="column">
+                    <h3>Other</h3>
+                    <a href="#">New Releases</a>
+                    <a href="#">Top Rated </a>
+                    <a href="#">Popular</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a id="admin" href="#admin"> Admin</a>
+    <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
+
+    <div id ="loggedIn" class="">
+        <a id="profile" href="#profile"> Profile</a>
+        <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
+
+    </div>
+
+</div>
+
+<div style="padding:16px">
+    <h3><%= users[1].userName %></h3>
+
+    <p id="result"> Name: <%= session.user %>  <%= session.admin %></p>
+
+
+</div>
+
+<script>
+    <% if (session.user == 'none') { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.add("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.remove("hidden");
+    <% } else { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.remove("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.add("hidden");
+    <% }%>
+
+    <% if (session.admin == false) { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.add("hidden");
+
+    <% } else { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.remove("hidden");
+
+    <% }%>
+</script>
+
+
+</body>
+
+
+</html>

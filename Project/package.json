@@ -1,0 +1,33 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "REVW Website",
+  "main": "REVW-app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -ui tdd test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TKRHinton/Comp3006.git"
+  },
+  "author": "Thomas Hinton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TKRHinton/Comp3006/issues"
+  },
+  "homepage": "https://github.com/TKRHinton/Comp3006#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.6",
+    "save": "^2.4.0"
+  }
+}
