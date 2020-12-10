@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
+    "test": "mocha -ui tdd test/",
     "start": "nodemon REVW-app.js"
-    "test": "mocha -ui tdd test/"
   },
   "repository": {
     "type": "git",
