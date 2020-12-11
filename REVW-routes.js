@@ -14,8 +14,9 @@ async function  listAllUsers(request, response) {
 async function pageHome(request, response) {
     let users = await db.getUsers(request.body.platform);
     let sess = request.session;
+    let date = logic.newDate();
 
-    response.render("home", {"users": users, "session": sess});
+    response.render("home", {"users": users, "session": sess, "date": date});
 }
 
 async function pageSignOut(request, response) {

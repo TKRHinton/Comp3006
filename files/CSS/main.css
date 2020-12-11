@@ -34,5 +34,13 @@ article {
 }
 
 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    background-color:rgba(192,192,192,0.2);
+    color: white;
+    text-align: center;
 
 }

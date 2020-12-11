@@ -23,3 +23,28 @@ suite("Test coin flip", function() {
     });
 
 });
+
+suite("Test date fucntion", function() {
+
+    test("#Unit test 25 testing the date stamp works properly", function() {
+        let date = new Date();
+        let dateStr = date.getFullYear() + "-";
+        let month = date.getMonth() + 1;
+        if (month > 9) {
+            dateStr += month + "-";
+        } else {
+            dateStr += "0" + month + "-";
+        }
+        if (date.getDate() > 9) {
+            dateStr += date.getDate();
+        } else {
+            dateStr += "0" + date.getDate();
+        }
+
+        let webDate = logic.newDate();
+
+        chai.assert.equal(webDate, dateStr, "Date does not match");
+    });
+
+
+});
