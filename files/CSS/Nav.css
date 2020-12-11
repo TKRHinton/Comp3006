@@ -1,18 +1,8 @@
 
 
-body {
-    background-image: url("../Images/dark-blue-background.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    margin: 0px;
-    color: #ffffff;
-}
-
-
 
 img {
-    width:100px;
+    width:70px;
     height:auto;
     object-fit:cover;
 }
@@ -20,8 +10,9 @@ img {
 /* Navbar container */
 .navbar {
     overflow: hidden;
+    /*background-color: #ff3333; */
     background-color: #333333;
-    font-family: Arial;
+    font-family: Helvetica, sans-serif;
     box-shadow: 4px 4px 5px black;
 
 }
@@ -29,20 +20,21 @@ img {
 /* Links inside the navbar */
 .navbar a {
 
-    margin-left: 40px;
+    margin-left: 20px;
     float: left;
-    font-size: 32px;
+    font-size: 22px;
     font-weight: bold;
-    color: #814bc6;
-    text-shadow: 1px 1px #4a0b77;
+   /* color: #814bc6;
+    text-shadow: 1px 1px #4a0b77; */
+
+    color: white;
+    text-shadow: 1px 1px #757477;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 20px;
 
     text-decoration: none;
     transition: 0.5s;
 }
-
-
 
 
 
@@ -55,14 +47,15 @@ img {
 /* Dropdown button */
 .dropdown .dropbtn {
 
-    font-size: 30px;
+    font-size: 20px;
 
     border: none;
     outline: none;
-    color: white;
+
     padding: 15px 12px;
     background-color: inherit;
-    font: inherit; /* Important for vertical align on mobile phones */
+    color: inherit;
+ /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
 }
 

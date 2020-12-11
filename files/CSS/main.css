@@ -1,0 +1,38 @@
+
+body {
+    background-image: url("../Images/purple-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0px;
+    color: #ffffff;
+}
+
+.container{
+    padding: 40px;
+    display: flex;
+    color: #e3ddcb;
+    font-family: "proxima_nova","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+section {
+    background-color:rgba(192,192,192,0.4);
+    box-shadow: 4px 4px 5px black;
+    margin-right: 3%;
+    padding: 20px;
+    width: 70%;
+}
+
+article {
+    background-color:rgba(192,192,192,0.4);
+    box-shadow: 4px 4px 5px black;
+    padding: 8px;
+    width: 25%;
+}
+
+footer {
+
+}

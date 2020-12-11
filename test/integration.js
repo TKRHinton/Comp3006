@@ -27,8 +27,6 @@ suite("Testing Sum function", function() {
             chai.assert.include("5", response.text, "Wrong response text");
         });
 
-        server.close;
-
     });
 
 });

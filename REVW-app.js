@@ -21,7 +21,8 @@ app.use(session({
     saveUninitialized: true,
    // cookie: { user: 'none', admin: 'none'}
     user: 'none',
-    admin: false
+    admin: false,
+    userID: 'none'
 }));
 
 // Set up the static files.
@@ -59,4 +60,4 @@ function close() {
     });
 };
 
-close();
+//close();

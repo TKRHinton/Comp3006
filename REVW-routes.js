@@ -23,6 +23,7 @@ async function pageSignOut(request, response) {
     let sess = request.session;
     sess.user = 'none';
     sess.admin = false;
+    sess.userID = 'none';
 
     request.session = sess;
 
@@ -52,6 +53,7 @@ async function pageSignIn(request, response) {
             let sess = request.session;
             sess.user = users[0].userName;
             sess.admin = users[0].admin;
+            sess.userID = users[0]._id;
 
             var messageData = {
                 message : ("Hello " + sess.user + " , Welcome back"),

@@ -8,6 +8,7 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
+    <link rel="stylesheet" href=" /CSS/main.css">
 
 
 
@@ -18,13 +19,13 @@
 
 <body>
 <div class="navbar">
-    <a href="#home" id="logo">
+    <a href="http://localhost:9000/home" id="logo">
         <img src="/Images/logo.png" alt="Logo of REVW">
     </a>
-    <a href="#home">Home</a>
+    <a href="http://localhost:9000/home">Home</a>
     <div class="dropdown">
-        <button style="font-size:32px; margin-left: 40px; font-weight: bold; color: #814bc6;
-        text-shadow: 2px 2px #4a0b77;" class="dropbtn">Reviews
+        <button style="font-size:22px; margin-left: 0px; padding: 20px; font-weight: bold; color: white;
+        text-shadow: 1px 1px #757477; font-family: Helvetica, sans-serif;" class="dropbtn" id="review">Reviews
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
@@ -72,13 +73,38 @@
 
 </div>
 
+<div class="container">
+
+<section>
+    <p>example </p>
+
+
+
+</section>
+
+<article>
+    <p>sample</p>
+
+</article>
+
+</div>
+
+
+
+
+
 <div style="padding:16px">
     <h3><%= users[1].userName %></h3>
 
-    <p id="result"> Name: <%= session.user %>  <%= session.admin %></p>
+    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
 
 
 </div>
+
+<footer>
+
+    <p> sample</p>
+</footer>
 
 <script>
     <% if (session.user == 'none') { %>
