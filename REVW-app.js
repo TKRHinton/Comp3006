@@ -49,6 +49,14 @@ app.post('/signUpAttempt', routes.pageSignUp);
 
 
 //listens on port 9000
-app.listen(port, function() {
+var server = app.listen(port, function() {
     console.log("Listening on " + port);
 })
+
+function close() {
+    server.close(function () {
+        console.log("Server Closing");
+    });
+};
+
+module.exports.close = close;
