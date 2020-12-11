@@ -26,6 +26,8 @@ suite("Testing Sum function", function() {
             chai.assert.equal(response.status, 200, "Wrong status code");
             chai.assert.include("5", response.text, "Wrong response text");
         });
+
+        app.close();
     });
 
 });
