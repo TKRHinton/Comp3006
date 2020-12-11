@@ -9,5 +9,5 @@ install:
 - npm install mongoose
 - npm install mongodb
 - npm install ejs
-- npm install bcrypt
 - npm install express-session
+- npm install bcryptjs --save

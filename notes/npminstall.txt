@@ -1,0 +1,38 @@
+npm init
+npm install save express
+npm install save mongoose
+npm install save mongodb
+npm install save ejs
+npm install save nodemon -g
+npm install save bcrypt
+npm install save express-session
+npm install save -g mocha
+npm install save chai
+npm install save chai-http
+
+cd C:\Users\Theon\Documents\GitHub\Comp3006
+nodemon REVW-app.js
+node REVW-app.js
+
+
+show databases
+use revwdb
+db.users.find({})
+db.users,insertOne({userName: "Thomas", userPassword: "1231", admin: false})
+
+
+let gameSchema = new mongoose.Schema({
+
+    gameID: String,
+    gameName: String,
+    gamePlatform: String,
+    gameDecription: String,
+    gameTotalScore: String,
+    reviews: [
+        {reviewID: String, gameID: String, userID: String, reviewScore: String, reviewDescription: String, reviewDate: String}
+    ]
+});
+let Game = mongoose.model("game", gameSchema);
+module.exports.Game = Game;
+
+DI WD YT

@@ -1,0 +1,8 @@
+set up home page layout with css
+
+set up footer with clock 
+
+set up tests for clock 
+
+get travis working
+
