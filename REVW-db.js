@@ -35,6 +35,15 @@ async function postUser(username, password, admin) {
     return await models.User.find(filter);
 }
 
+async function deleteUser(username) {
+
+    let filter = {};
+    filter.userName = username;
+
+    await models.User.deleteOne ({userName: username});
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getUsersInfo = getUsersInfo;
 module.exports.postUser = postUser;
+module.exports.deleteUser = deleteUser;

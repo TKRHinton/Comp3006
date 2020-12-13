@@ -59,11 +59,11 @@
     </div>
 
 
-    <a id="admin" href="#admin"> Admin</a>
+    <a id="admin" href="http://localhost:9000/admin"> Admin</a>
     <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
 
     <div id ="loggedIn" class="">
-        <a id="profile" href="#profile"> Profile</a>
+        <a id="profile" href="http://localhost:9000/profile"> Profile</a>
         <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
 
     </div>
@@ -71,8 +71,6 @@
 </div>
 
 <div class="container">
-
-
 
     <section>
 
@@ -119,7 +117,36 @@
 
         <button class="accordion">Remove User</button>
         <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           <table>
+               <thead>
+                    <tr><th>User ID</th> <th>Username</th> <th>User Password</th> <th> Admin </th></tr>
+               </thead>
+
+               <tbody>
+                 <% for (i=0; i<users.length; i++) { %>
+                 <tr>
+                     <td> <%= users[i]._id %> </td>
+                     <td> <%=  users[i].userName%> </td>
+                     <td> <%= users[i].userPassword %> </td>
+                     <td> <%= users[i].admin %> </td>
+                 </tr>
+                 <% } %>
+               </tbody>
+           </table>
+
+
+            <form action="/adminRequest" method="post">
+                <div class="container">
+                    <label for="username"><b></b></label>
+                    <input type="text" placeholder="Enter Username" name="deleteUser" minlength="2" maxlength="28" required>
+                    <button type="submit">Delete Account </button>
+                </div>
+
+                <div id="res" class="alert <%= outputDelete.class %>">
+                    <%= outputDelete.message %>
+                </div>
+            </form>
+
         </div>
 
         <button class="accordion">Remove Game</button>

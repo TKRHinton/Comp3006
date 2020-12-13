@@ -71,4 +71,25 @@ span.psw {
     color: white;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color:rgba(192,192,192,0.2);}
+
+th {
+    background-color: #814bc6;
+    color: white;
+}
+
+.hidden {
+    visibility: hidden;
+}
 

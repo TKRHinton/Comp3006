@@ -63,4 +63,4 @@ function close() {
     });
 };
 
-//close();
+close();

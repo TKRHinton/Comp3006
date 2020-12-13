@@ -26,7 +26,6 @@ async function pageAdmin(request, response) {
 
     let user = users.toString();
 
-
     if (request.body.userName == null) {
         var messageData = {
             message : ("hidden"),
@@ -57,7 +56,43 @@ async function pageAdmin(request, response) {
         users = await db.postUser(request.body.userName, hashedPassword, admin);
     }
 
-    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData});
+
+
+    if (request.body.deleteUser != null)
+    {
+        let users = await db.getUsers(request.body.deleteUser);
+        let user = users.toString();
+
+        if (user != '')
+        {
+            var messageDataDelete = {
+                message : (users[0].userName + "Has Been Deleted"),
+                class : "correct"
+            };
+
+            await db.deleteUser(users[0].userName);
+
+        }
+        else {
+            var messageDataDelete = {
+                message : ("Sorry You have type the wrong name please try again"),
+                class : "incorrect"
+
+            };
+        }
+    }
+    else {
+        var messageDataDelete = {
+            message : ("Hidden"),
+            class : "hidden"
+
+        };
+    }
+
+
+
+    users = await db.getUsers(request.body.platform);
+    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData, "outputDelete": messageDataDelete});
 }
 
 async function pageSignOut(request, response) {
