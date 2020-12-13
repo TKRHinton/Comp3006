@@ -4,7 +4,7 @@ npm install save mongoose
 npm install save mongodb
 npm install save ejs
 npm install save nodemon -g
-npm install save bcrypt
+npm install save bcryptjs --save
 npm install save express-session
 npm install save -g mocha
 npm install save chai

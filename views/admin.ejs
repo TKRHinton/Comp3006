@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Admin </title>
+    <style>
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href=" /CSS/Nav.css">
+    <link rel="stylesheet" href=" /CSS/main.css">
+    <link rel="stylesheet" href="/CSS/admin.css">
+</head>
+
+
+
+<body>
+<div class="navbar">
+    <a href="http://localhost:9000/home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+    <a href="http://localhost:9000/home">Home</a>
+    <div class="dropdown">
+        <button style="font-size:22px; margin-left: 0px; padding: 20px; font-weight: bold; color: white;
+        text-shadow: 1px 1px #757477; font-family: Helvetica, sans-serif;" class="dropbtn" id="review">Reviews
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <div class="header">
+                <h2>Catagrories</h2>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h3>Genre</h3>
+                    <a href="#">Action</a>
+                    <a href="#">Adventure</a>
+                    <a href="#">Role-Playing</a>
+                    <a href="#">Simulation</a>
+                    <a href="#">Strategy</a>
+                    <a href="#">Sports</a>
+                </div>
+                <div class="column">
+                    <h3>Platform</h3>
+                    <a href="#">PS</a>
+                    <a href="#">Xbox</a>
+                    <a href="#">Nintendo</a>
+                    <a href="#">PC</a>
+                </div>
+
+                <div class="column">
+                    <h3>Other</h3>
+                    <a href="#">New Releases</a>
+                    <a href="#">Top Rated </a>
+                    <a href="#">Popular</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a id="admin" href="#admin"> Admin</a>
+    <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
+
+    <div id ="loggedIn" class="">
+        <a id="profile" href="#profile"> Profile</a>
+        <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+
+
+    <section>
+
+        <h1> Admin</h1>
+
+
+        <button class="accordion">Add User</button>
+        <div class="panel">
+
+            <h1> Enter Details here:</h1>
+
+            <form action="/adminRequest" method="post">
+                <div class="container">
+                    <label for="username"><b></b></label>
+                    <input type="text" placeholder="Enter Username" name="userName" minlength="2" maxlength="28" required>
+
+                    <input type="checkbox" id="admin" name="admin" value="True">
+                    <label for ="admin"> Admin?</label>
+                </div>
+
+                <div class="container">
+
+                    <label for="psw"><b></b></label>
+                    <input type="password" placeholder="Enter Password" name="userPassword" minlength="2" maxlength="28"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Must include at least 1 uppercase character,lowercase character & number." required>
+
+                    <label for="psw2"><b></b></label>
+                    <input type="password" placeholder="Re-Enter Password" name="userPassword2" minlength="2" maxlength="28"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Must include at least 1 uppercase character,lowercase character & number." required>
+
+                    <button type="submit">Add Account </button>
+                </div>
+
+                <div id="res" class="alert <%= output.class %>">
+                    <%= output.message %>
+                </div>
+            </form>
+        </div>
+
+        <button class="accordion">Add Game</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <button class="accordion">Remove User</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <button class="accordion">Remove Game</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+
+
+    </section>
+
+    <article>
+        <h1>Website Statistics</h1>
+
+    </article>
+
+</div>
+
+
+
+
+
+<div style="padding:16px">
+
+    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
+
+</div>
+
+<footer>
+
+    <p> Revw © | <%= date %> </p>
+</footer>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<script>
+    <% if (session.user == 'none') { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.add("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.remove("hidden");
+    <% } else { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.remove("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.add("hidden");
+    <% }%>
+
+    <% if (session.admin == false) { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.add("hidden");
+
+    <% } else { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.remove("hidden");
+
+    <% }%>
+</script>
+
+
+</body>
+
+
+</html>

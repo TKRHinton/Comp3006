@@ -19,6 +19,47 @@ async function pageHome(request, response) {
     response.render("home", {"users": users, "session": sess, "date": date});
 }
 
+async function pageAdmin(request, response) {
+    let users = await db.getUsers(request.body.userName);
+    let sess = request.session;
+    let date = logic.newDate();
+
+    let user = users.toString();
+
+
+    if (request.body.userName == null) {
+        var messageData = {
+            message : ("hidden"),
+            class : "hidden"
+        };
+    }
+    else if(user !== '') {
+        var messageData = {
+            message : ("Sorry this username has already been taken " + request.body.admin),
+            class : "incorrect"
+        };
+    }
+    else if (request.body.userPassword != request.body.userPassword2) {
+        var messageData = {
+            message: "Passwords are not the same please try again",
+            class: "incorrect"
+        };
+    }
+    else {
+        var messageData = {
+            message : (request.body.userName + " , has been added"),
+            class : "correct"
+        };
+        admin = false;
+        if (request.body.admin == "True") {admin = true;};
+
+        let hashedPassword = await hash.hashPassword(request.body.userPassword);
+        users = await db.postUser(request.body.userName, hashedPassword, admin);
+    }
+
+    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData});
+}
+
 async function pageSignOut(request, response) {
     let users = await db.getUsers(request.body.platform);
     let sess = request.session;
@@ -142,6 +183,7 @@ module.exports.sumNumbers = sumNumbers;
 
 module.exports.listAllUsers = listAllUsers;
 module.exports.pageHome = pageHome;
+module.exports.pageAdmin = pageAdmin;
 module.exports.pageSignIn = pageSignIn;
 module.exports.pageSignUp = pageSignUp;
 module.exports.pageSignOut = pageSignOut;

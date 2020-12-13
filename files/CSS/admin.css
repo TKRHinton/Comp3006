@@ -1,0 +1,74 @@
+
+
+/* Bordered form */
+form {
+    background-color:rgba(192,192,192,0.2);
+    color: black;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box
+}
+
+button {
+    background-color: #814bc6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 8px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+
+}
+
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.incorrect{
+    background-color: #C6251B;
+    padding: 16px;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.correct{
+    background-color: #139e10;
+    padding: 16px;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+

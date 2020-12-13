@@ -29,7 +29,7 @@ section {
 article {
     background-color:rgba(192,192,192,0.4);
     box-shadow: 4px 4px 5px black;
-    padding: 8px;
+    padding: 10px;
     width: 25%;
 }
 
@@ -43,4 +43,42 @@ footer {
     color: white;
     text-align: center;
 
+}
+
+.accordion {
+    background-color: #814BC6;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+
+}
+
+.active, .accordion:hover {
+    background-color: #bf75cc;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color:rgba(192,192,192,0.2);
+    overflow: hidden;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+
+button.accordion.active:after {
+    content: "\2212";
 }

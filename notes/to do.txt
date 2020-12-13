@@ -1,8 +1,13 @@
-set up home page layout with css
 
-set up footer with clock 
+Sunday
+- research uploading files with forms - get info on location
+- create admin page (delete user, add user with admin, add game, remove game)
+- create game page (change sort wwith differnt link)
+- Create game review page (shows one game , see reviews and make one)
+- Profile (shows info and reviews)
 
-set up tests for clock 
-
-get travis working
-
+Monday
+- Tests for functions 
+- Comments and fix bugs
+- create chat function
+- create questionare

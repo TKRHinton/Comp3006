@@ -41,12 +41,15 @@ module.exports.app = app;
 
 app.get("/users", routes.listAllUsers);
 app.get("/home", routes.pageHome);
+app.get("/admin", routes.pageAdmin);
 app.get("/signIn", routes.pageSignIn);
 app.get("/signUp", routes.pageSignUp);
 app.get("/signOut", routes.pageSignOut);
 
+
 app.post('/signInAttempt', routes.pageSignIn);
 app.post('/signUpAttempt', routes.pageSignUp);
+app.post('/adminRequest', routes.pageAdmin);
 
 
 //listens on port 9000
@@ -60,4 +63,4 @@ function close() {
     });
 };
 
-close();
+//close();
