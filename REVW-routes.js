@@ -101,11 +101,11 @@ async function pageAdmin(request, response) {
         }
         else {
             var messageDataGame = {
-                message : (request.body.gameName " Game has been added"),
+                message : (request.body.gameName + " Game has been added"),
                 class : "correct"
             };
 
-            await db.postGame(request.body.gameName,request.body.gamePlatform,request.body.gameDescription
+            await db.postGame(request.body.gameName,request.body.gamePlatform,request.body.gameDescription, "0"
             ,request.body.gameRelease.toString(), request.body.gameImage);
 
         }
@@ -120,11 +120,41 @@ async function pageAdmin(request, response) {
 
 
     //For Removing Game
+    if (request.body.deleteGame != null)
+    {
+        let games = await db.getGames(request.body.deleteGame);
+        let game = games.toString();
+
+        if (game != '')  {
+            var messageDataDeleteGame = {
+                message : (games[0].gameName + " Has Been Deleted"),
+                class : "correct"
+            };
+            await db.deleteGame(games[0].gameName);
+        }
+        else {
+            var messageDataDeleteGame = {
+                message : ("Sorry You have type the wrong name please try again"),
+                class : "incorrect"
+            };
+        }
+    }
+    else {
+        var messageDataDeleteGame = {
+            message : ("Hidden"),
+            class : "hidden"
+        };
+    }
 
 
+
+
+
+
+    games = await db.getGames(request.body.platform);
     users = await db.getUsers(request.body.platform);
-    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData,
-        "outputDelete": messageDataDelete, "outputGame": messageDataGame});
+    response.render("admin", {"users": users,"games": games ,"session": sess, "date": date, "output": messageData,
+        "outputDelete": messageDataDelete, "outputGame": messageDataGame,"outputDeleteGame": messageDataDeleteGame});
 }
 
 async function pageSignOut(request, response) {

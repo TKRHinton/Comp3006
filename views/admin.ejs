@@ -181,7 +181,34 @@
 
         <button class="accordion">Remove Game</button>
         <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <table>
+                <thead>
+                <tr><th>Name</th> <th> Platform </th> <th>Release </th></tr>
+                </thead>
+
+                <tbody>
+                <% for (i=0; i<games.length; i++) { %>
+                    <tr>
+                        <td> <%= games[i].gameName %> </td>
+                        <td> <%=  games[i].gamePlatform%> </td>
+                        <td> <%= games[i].gameRelease %> </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+
+
+            <form action="/adminRequest" method="post">
+                <div class="container">
+                    <label for="username"><b></b></label>
+                    <input type="text" placeholder="Enter Username" name="deleteGame" minlength="2" maxlength="28" required>
+                    <button type="submit">Delete Game </button>
+                </div>
+
+                <div id="res" class="alert <%= outputDeleteGame.class %>">
+                    <%= outputDeleteGame.message %>
+                </div>
+            </form>
         </div>
 
 
