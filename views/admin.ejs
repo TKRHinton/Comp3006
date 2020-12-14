@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="column">
                     <h3>Genre</h3>
-                    <a href="#">Action</a>
+                    <a href="http://localhost:9000/games?genre=Action">Action</a>
                     <a href="#">Adventure</a>
                     <a href="#">Role-Playing</a>
                     <a href="#">Simulation</a>
@@ -45,6 +45,7 @@
                     <a href="#">Xbox</a>
                     <a href="#">Nintendo</a>
                     <a href="#">PC</a>
+                    <a href="#">Console</a>
                 </div>
 
                 <div class="column">
@@ -118,8 +119,33 @@
                     <label for="gamename"><b></b></label>
                     <input type="text" placeholder="Enter Name" name="gameName" minlength="2" maxlength="28" required>
 
+                    <label for="gamePlatform"><b> Platform  </b> </label>
+                    <select style="width: 15%" name="gamePlatform" id="gamePlatform">
+                        <option value="Playstation"> Playstation </option>
+                        <option value="Xbox"> Xbox </option>
+                        <option value="Nintendo"> Nintendo </option>
+                        <option value="PC"> PC </option>
+                        <option value="All"> All </option>
+                    </select>
+
+                    <label for="gameGenre"><b> Genre  </b> </label>
+                    <select style="width: 15%" name="gameGenre" id="gameGenre">
+                        <option value="Action"> Action </option>
+                        <option value="Adventure"> Adventure </option>
+                        <option value="RPG"> RPG </option>
+                        <option value="Strategy"> Strategy </option>
+                        <option value="Sports"> Sports </option>
+                    </select>
+
+
+
+
+                <!--
                     <label for="gamePlatform"><b></b></label>
                     <input type="text" placeholder="Platform" name="gamePlatform" minlength="2" maxlength="28" required>
+
+                    <label for="gameGenre"><b></b></label>
+                    <input type="text" placeholder="Genre" name="gameGenre" minlength="2" maxlength="28" required> -->
                 </div>
 
                 <div class="container">
@@ -133,7 +159,7 @@
                    <input style="width: 20%" type="date" placeholder="Release Date" name="gameRelease" minlength="2" maxlength="28" required>
 
                     <label for="gameImage"><b></b></label>
-                    <input type="text" placeholder="File Path of image" name="gameImage" minlength="2" maxlength="28" required>
+                    <input type="text" placeholder="File Path of image" name="gameImage" minlength="2" maxlength="100" required>
 
 
                     <button type="submit">Add Game </button>
@@ -183,7 +209,7 @@
         <div class="panel">
             <table>
                 <thead>
-                <tr><th>Name</th> <th> Platform </th> <th>Release </th></tr>
+                <tr><th>Name</th> <th> Platform </th><th>Genre </th> <th>Release </th></tr>
                 </thead>
 
                 <tbody>
@@ -191,6 +217,7 @@
                     <tr>
                         <td> <%= games[i].gameName %> </td>
                         <td> <%=  games[i].gamePlatform%> </td>
+                        <td> <%= games[i].gameGenre %> </td>
                         <td> <%= games[i].gameRelease %> </td>
                     </tr>
                 <% } %>
@@ -217,6 +244,17 @@
 
     <article>
         <h1>Website Statistics</h1>
+
+        <p> Number Of Users: </p>
+        <p> Average User Name Length: </p>
+        <p> Number Of Admin: </p>
+        <p> Number Of Games: </p>
+        <p> Number Of PC Games: </p>
+        <p> Number Of Console Games: </p>
+        <p> Number Of Reviews: </p>
+        <p> Average Reviews Per Game: </p>
+
+
 
     </article>
 

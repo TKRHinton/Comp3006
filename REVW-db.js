@@ -48,9 +48,9 @@ async function deleteUser(username) {
     await models.User.deleteOne ({userName: username});
 }
 
-async function postGame(gamename, gameplatform, gamedescription, gamescore, gamerelease, gameimage) {
+async function postGame(gamename, gameplatform,gamegenre, gamedescription, gamescore, gamerelease, gameimage) {
 
-    await models.Game.create({gameName: gamename, gamePlatform: gameplatform, gameDescription: gamedescription,
+    await models.Game.create({gameName: gamename, gamePlatform: gameplatform,gameGenre: gamegenre, gameDescription: gamedescription,
         gameScore: gamescore, gameRelease: gamerelease, gameImage: gameimage});
 }
 

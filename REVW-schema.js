@@ -13,6 +13,7 @@ let gameSchema = new mongoose.Schema({
 
     gameName: String,
     gamePlatform: String,
+    gameGenre: String,
     gameDescription: String,
     gameScore: String,
     gameRelease: String,
