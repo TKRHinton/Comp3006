@@ -76,7 +76,6 @@
 
         <h1> Admin</h1>
 
-
         <button class="accordion">Add User</button>
         <div class="panel">
 
@@ -112,7 +111,38 @@
 
         <button class="accordion">Add Game</button>
         <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h1> Enter Details here:</h1>
+
+            <form action="/adminRequest" method="post">
+                <div class="container">
+                    <label for="gamename"><b></b></label>
+                    <input type="text" placeholder="Enter Name" name="gameName" minlength="2" maxlength="28" required>
+
+                    <label for="gamePlatform"><b></b></label>
+                    <input type="text" placeholder="Platform" name="gamePlatform" minlength="2" maxlength="28" required>
+                </div>
+
+                <div class="container">
+                    <label for="gameDescription"><b></b></label>
+                    <input style="width: 100%" type="text" placeholder="Description Of Game" name="gameDescription" minlength="2" maxlength="120" required>
+                </div>
+
+                <div class="container">
+
+                    <label for="gameRelease"><b></b></label>
+                   <input style="width: 20%" type="date" placeholder="Release Date" name="gameRelease" minlength="2" maxlength="28" required>
+
+                    <label for="gameImage"><b></b></label>
+                    <input type="text" placeholder="File Path of image" name="gameImage" minlength="2" maxlength="28" required>
+
+
+                    <button type="submit">Add Game </button>
+                </div>
+
+                <div id="res" class="alert <%= outputGame.class %>">
+                    <%= outputGame.message %>
+                </div>
+            </form>
         </div>
 
         <button class="accordion">Remove User</button>

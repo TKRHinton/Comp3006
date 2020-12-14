@@ -26,6 +26,7 @@ async function pageAdmin(request, response) {
 
     let user = users.toString();
 
+    //For Adding User
     if (request.body.userName == null) {
         var messageData = {
             message : ("hidden"),
@@ -56,28 +57,23 @@ async function pageAdmin(request, response) {
         users = await db.postUser(request.body.userName, hashedPassword, admin);
     }
 
-
-
+    //For Removing User
     if (request.body.deleteUser != null)
     {
         let users = await db.getUsers(request.body.deleteUser);
         let user = users.toString();
 
-        if (user != '')
-        {
+        if (user != '')  {
             var messageDataDelete = {
-                message : (users[0].userName + "Has Been Deleted"),
+                message : (users[0].userName + " Has Been Deleted"),
                 class : "correct"
             };
-
             await db.deleteUser(users[0].userName);
-
         }
         else {
             var messageDataDelete = {
                 message : ("Sorry You have type the wrong name please try again"),
                 class : "incorrect"
-
             };
         }
     }
@@ -85,14 +81,50 @@ async function pageAdmin(request, response) {
         var messageDataDelete = {
             message : ("Hidden"),
             class : "hidden"
-
         };
     }
 
 
 
+
+    //For Adding Game
+
+    if (request.body.gameName != null) {
+        let games = await db.getGames(request.body.gameName);
+        let game = games.toString();
+
+        if (game != '') {
+            var messageDataGame = {
+                message : ("Sorry game is already in database"),
+                class : "incorrect"
+            };
+        }
+        else {
+            var messageDataGame = {
+                message : (request.body.gameName " Game has been added"),
+                class : "correct"
+            };
+
+            await db.postGame(request.body.gameName,request.body.gamePlatform,request.body.gameDescription
+            ,request.body.gameRelease.toString(), request.body.gameImage);
+
+        }
+    }
+    else {
+        var messageDataGame = {
+            message : ("Hidden"),
+            class : "hidden"
+        };
+    }
+
+
+
+    //For Removing Game
+
+
     users = await db.getUsers(request.body.platform);
-    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData, "outputDelete": messageDataDelete});
+    response.render("admin", {"users": users, "session": sess, "date": date, "output": messageData,
+        "outputDelete": messageDataDelete, "outputGame": messageDataGame});
 }
 
 async function pageSignOut(request, response) {
