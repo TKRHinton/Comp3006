@@ -1,1 +1,168 @@
-{\rtf1}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Review - <%= games[0].gameName %> </title>
+    <style>
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href=" /CSS/Nav.css">
+    <link rel="stylesheet" href=" /CSS/main.css">
+    <link rel="stylesheet" href=" /CSS/review.css">
+
+
+
+
+
+</head>
+
+
+
+<body>
+<div class="navbar">
+    <a href="http://localhost:9000/home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+    <a href="http://localhost:9000/home">Home</a>
+    <div class="dropdown">
+        <button style="font-size:22px; margin-left: 0px; padding: 20px; font-weight: bold; color: white;
+        text-shadow: 1px 1px #757477; font-family: Helvetica, sans-serif;" class="dropbtn" id="review">Reviews
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <div class="header">
+                <h2>Catagrories</h2>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h3>Genre</h3>
+                    <a href="http://localhost:9000/games?genre=Action&platform=Null&other=Null">Action</a>
+                    <a href="http://localhost:9000/games?genre=Adventure&platform=Null&other=Null">Adventure</a>
+                    <a href="http://localhost:9000/games?genre=RPG&platform=Null&other=Null">Role-Playing</a>
+                    <a href="http://localhost:9000/games?genre=Simulation&platform=Null&other=Null">Simulation</a>
+                    <a href="http://localhost:9000/games?genre=Strategy&platform=Null&other=Null">Strategy</a>
+                    <a href="http://localhost:9000/games?genre=Sports&platform=Null&other=Null">Sports</a>
+                </div>
+                <div class="column">
+                    <h3>Platform</h3>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Playstation&other=Null">PS</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Xbox&other=Null">Xbox</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Nintendo&other=Null">Nintendo</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=PC&other=Null">PC</a>
+                </div>
+
+                <div class="column">
+                    <h3>Other</h3>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=New">New Releases</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Top">Top Rated </a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Popular">Popular</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a id="admin" href="http://localhost:9000/admin"> Admin</a>
+    <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
+
+    <div id ="loggedIn" class="">
+        <a id="profile" href="http://localhost:9000/profile"> Profile</a>
+        <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <section>
+
+
+        <h1> Reviews </h1>
+
+        <div class="row">
+
+
+            <div class="card">
+                <img id="gameImage" src="/Game-Images/<%=  games[0].gameImage %>" alt="Avatar" style="width:100%">
+                <p id="gameScore"><%=  games[0].gameScore %></p>
+            </div>
+            <div class="cardUnder">
+                <h2><b><%=  games[0].gameName  %></b></h2>
+                <p>Platform | <%=  games[0].gamePlatform%> </p>
+                <p>Genre | <%= games[0].gameGenre%></p>
+                <p>Release | <%=  games[0].gameRelease%></p>
+                <p><%=  games[0].gameDescription%></p>
+            </div>
+
+
+        </div>
+
+
+
+
+    </section>
+
+    <article>
+        <p><%= games %> </p>
+        <p><%= test %> </p>
+
+    </article>
+
+</div>
+
+
+
+<div style="padding:16px">
+
+
+    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
+
+</div>
+
+
+
+
+
+<footer>
+
+    <p> Revw © | <%= date %> </p>
+</footer>
+
+<script>
+    <% if (session.user == 'none') { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.add("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.remove("hidden");
+    <% } else { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.remove("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.add("hidden");
+    <% }%>
+
+    <% if (session.admin == false) { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.add("hidden");
+
+    <% } else { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.remove("hidden");
+
+    <% }%>
+</script>
+
+
+</body>
+
+
+</html>

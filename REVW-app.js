@@ -45,8 +45,9 @@ app.get("/admin", routes.pageAdmin);
 app.get("/signIn", routes.pageSignIn);
 app.get("/signUp", routes.pageSignUp);
 app.get("/signOut", routes.pageSignOut);
+app.get("/games", routes.pageGames);
 
-
+app.post('/review', routes.pageReview);
 app.post('/signInAttempt', routes.pageSignIn);
 app.post('/signUpAttempt', routes.pageSignUp);
 app.post('/adminRequest', routes.pageAdmin);

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Reviews </title>
+    <style>
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href=" /CSS/Nav.css">
+    <link rel="stylesheet" href=" /CSS/main.css">
+    <link rel="stylesheet" href=" /CSS/game.css">
+
+    <script>
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var genre = url.searchParams.get("genre");
+        var platfrom =  url.searchParams.get("platform");
+        var other =  url.searchParams.get("other");
+       // document.getElementById("ex").innerHTML = genre + platfrom + other;
+    </script>
+</head>
+
+<body>
+<div class="navbar">
+    <a href="http://localhost:9000/home" id="logo">
+        <img src="/Images/logo.png" alt="Logo of REVW">
+    </a>
+    <a href="http://localhost:9000/home">Home</a>
+    <div class="dropdown">
+        <button style="font-size:22px; margin-left: 0px; padding: 20px; font-weight: bold; color: white;
+        text-shadow: 1px 1px #757477; font-family: Helvetica, sans-serif;" class="dropbtn" id="review">Reviews
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <div class="header">
+                <h2>Catagrories</h2>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h3>Genre</h3>
+                    <a href="http://localhost:9000/games?genre=Action&platform=Null&other=Null">Action</a>
+                    <a href="http://localhost:9000/games?genre=Adventure&platform=Null&other=Null">Adventure</a>
+                    <a href="http://localhost:9000/games?genre=RPG&platform=Null&other=Null">Role-Playing</a>
+                    <a href="http://localhost:9000/games?genre=Simulation&platform=Null&other=Null">Simulation</a>
+                    <a href="http://localhost:9000/games?genre=Strategy&platform=Null&other=Null">Strategy</a>
+                    <a href="http://localhost:9000/games?genre=Sports&platform=Null&other=Null">Sports</a>
+                </div>
+                <div class="column">
+                    <h3>Platform</h3>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Playstation&other=Null">PS</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Xbox&other=Null">Xbox</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Nintendo&other=Null">Nintendo</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=PC&other=Null">PC</a>
+                </div>
+
+                <div class="column">
+                    <h3>Other</h3>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=New">New Releases</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Top">Top Rated </a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Popular">Popular</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a id="admin" href="http://localhost:9000/admin"> Admin</a>
+    <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
+
+    <div id ="loggedIn" class="">
+        <a id="profile" href="http://localhost:9000/profile"> Profile</a>
+        <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <section>
+
+        <h1> Reviews </h1>
+
+        <div class="row">
+
+        <% for( i=0; i<sort.length; i++) {%>
+
+
+            <div class="card">
+                <img id="gameImage" src="/Game-Images/<%= sort[i].gameImage %>" alt="Avatar" style="width:100%">
+                <p id="gameScore"><%= sort[i].gameScore %></p>
+                <div class="cardUnder">
+                    <h2><b><%= sort[i].gameName  %></b></h2>
+                    <p>Platform | <%= sort[i].gamePlatform%> </p>
+                    <p>Genre | <%= sort[i].gameGenre%></p>
+                    <p>Release | <%= sort[i].gameRelease%></p>
+                    <p><%= sort[i].gameDescription%></p>
+                    <form action="/review" method="post">
+                        <button type="submit" name="gameName" value="<%= sort[i].gameName%>"> More </button>
+                    </form>
+
+                </div>
+            </div>
+        <% } %>
+        </div>
+
+
+
+    </section>
+
+    <article>
+        <p id="ex"> </p>
+
+        <p><%= sort[0].gameImage %> </p>
+
+        <p> <%= url.genre%> </p>
+        <p> <%= url.platform%> </p>
+        <p> <%= url.other%> </p>
+
+    </article>
+
+</div>
+
+
+
+
+
+<div style="padding:16px">
+    <h3><%= games[1].gameName %></h3>
+
+    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
+
+</div>
+
+<footer>
+
+    <p> Revw © | <%= date %> </p>
+</footer>
+
+
+<script>
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var genre = url.searchParams.get("genre");
+    var platfrom =  url.searchParams.get("platform");
+    var other =  url.searchParams.get("other");
+    document.getElementById("ex").innerHTML = genre + platfrom + other;
+</script>
+
+
+<script>
+    <% if (session.user == 'none') { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.add("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.remove("hidden");
+    <% } else { %>
+
+    let navId = document.getElementById("loggedIn");
+    navId.classList.remove("hidden");
+
+    navId = document.getElementById("signIn");
+    navId.classList.add("hidden");
+    <% }%>
+
+    <% if (session.admin == false) { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.add("hidden");
+
+    <% } else { %>
+
+    navId = document.getElementById("admin");
+    navId.classList.remove("hidden");
+
+    <% }%>
+</script>
+
+
+</body>
+
+
+</html>

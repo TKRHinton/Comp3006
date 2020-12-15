@@ -32,27 +32,26 @@
             <div class="row">
                 <div class="column">
                     <h3>Genre</h3>
-                    <a href="http://localhost:9000/games?genre=Action">Action</a>
-                    <a href="#">Adventure</a>
-                    <a href="#">Role-Playing</a>
-                    <a href="#">Simulation</a>
-                    <a href="#">Strategy</a>
-                    <a href="#">Sports</a>
+                    <a href="http://localhost:9000/games?genre=Action&platform=Null&other=Null">Action</a>
+                    <a href="http://localhost:9000/games?genre=Adventure&platform=Null&other=Null">Adventure</a>
+                    <a href="http://localhost:9000/games?genre=RPG&platform=Null&other=Null">Role-Playing</a>
+                    <a href="http://localhost:9000/games?genre=Simulation&platform=Null&other=Null">Simulation</a>
+                    <a href="http://localhost:9000/games?genre=Strategy&platform=Null&other=Null">Strategy</a>
+                    <a href="http://localhost:9000/games?genre=Sports&platform=Null&other=Null">Sports</a>
                 </div>
                 <div class="column">
                     <h3>Platform</h3>
-                    <a href="#">PS</a>
-                    <a href="#">Xbox</a>
-                    <a href="#">Nintendo</a>
-                    <a href="#">PC</a>
-                    <a href="#">Console</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Playstation&other=Null">PS</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Xbox&other=Null">Xbox</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Nintendo&other=Null">Nintendo</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=PC&other=Null">PC</a>
                 </div>
 
                 <div class="column">
                     <h3>Other</h3>
-                    <a href="#">New Releases</a>
-                    <a href="#">Top Rated </a>
-                    <a href="#">Popular</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=New">New Releases</a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Top">Top Rated </a>
+                    <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Popular">Popular</a>
 
                 </div>
             </div>
@@ -132,6 +131,7 @@
                     <select style="width: 15%" name="gameGenre" id="gameGenre">
                         <option value="Action"> Action </option>
                         <option value="Adventure"> Adventure </option>
+                        <option value="Simulation"> Simulation </option>
                         <option value="RPG"> RPG </option>
                         <option value="Strategy"> Strategy </option>
                         <option value="Sports"> Sports </option>

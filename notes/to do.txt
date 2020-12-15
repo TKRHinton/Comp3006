@@ -1,13 +1,15 @@
 
-Sunday
-- create admin page (add game, remove game)
-
-
-Monday
+Tuesday
 - create game page (change sort wwith differnt link)
+
 - Create game review page (shows one game , see reviews and make one)
+
 - Profile (shows info and reviews)
+
 - Tests for functions 
+
 - Comments and fix bugs
+
 - create chat function
+
 - create questionare

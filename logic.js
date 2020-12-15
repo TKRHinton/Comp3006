@@ -52,9 +52,42 @@ function adminStatitics(Users, Games)
     return message;
 }
 
+function sortGames(message, games) {
+
+    let sort = [];
+
+    if (message.other != 'Null')
+    {
+        return games;
+    }
+
+    if (message.genre != 'Null') {
+
+        for (i=0; i<games.length; i++) {
+
+            if (message.genre == games[i].gameGenre)
+            {
+                sort.push(games[i]);
+            }
+        }
+    }
+
+    if (message.platform != 'Null') {
+        for (i=0; i<games.length; i++) {
+
+            if ((message.platform == games[i].gamePlatform) || ('All' == games[i].gamePlatform) )
+            {
+                sort.push(games[i]);
+            }
+        }
+    }
+
+    return sort;
+}
 
 
 module.exports.flipCoin = flipCoin;
 module.exports.addNumbers = addNumbers;
 module.exports.newDate = newDate;
 module.exports.adminStatitics = adminStatitics;
+module.exports.sortGames = sortGames;
