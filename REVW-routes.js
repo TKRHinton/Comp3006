@@ -16,6 +16,8 @@ async function pageHome(request, response) {
     let sess = request.session;
     let date = logic.newDate();
 
+
+
     response.render("home", {"users": users, "session": sess, "date": date});
 }
 
@@ -318,29 +320,6 @@ async function pageProfile(request,response) {
 
 }
 
-function coinFlipRoute(request, response) {
-    let flip = logic.flipCoin();
-    let sess = request.session;
-
-    if (flip) {
-        response.send("Heads");
-    } else {
-        response.send("Tails");
-    }
-}
-
-function sumNumbers(request, response) {
-
-    let num1 = 2;
-    let num2 = 3;
-
-    let sum = logic.addNumbers(num1, num2)
-
-    response.send(sum.toString());
-}
-
-module.exports.coinFlipRoute = coinFlipRoute;
-module.exports.sumNumbers = sumNumbers;
 
 module.exports.pageProfile = pageProfile;
 module.exports.listAllUsers = listAllUsers;

@@ -34,9 +34,6 @@ app.set("view engine", "ejs");
 // Enable processing of post forms.
 app.use(express.urlencoded({extended: true}));
 
-app.get("/flip", routes.coinFlipRoute);
-app.get("/sum", routes.sumNumbers);
-
 module.exports.app = app;
 
 app.get("/users", routes.listAllUsers);

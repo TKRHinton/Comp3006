@@ -1,14 +1,3 @@
-function flipCoin() {
-    /**
-     * Return true for heads, false for tails.
-     */
-    return Math.random() > 0.5;
-}
-
-function addNumbers(number1, number2){
-    let sum = number1 + number2;
-    return sum;
-}
 
 //check if date works
 function newDate() {
@@ -114,8 +103,6 @@ function checkUser(user, reviews) {
 
 module.exports.checkUser = checkUser;
 module.exports.newScore = newScore;
-module.exports.flipCoin = flipCoin;
-module.exports.addNumbers = addNumbers;
 module.exports.newDate = newDate;
 module.exports.adminStatitics = adminStatitics;
 module.exports.sortGames = sortGames;
