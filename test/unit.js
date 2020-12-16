@@ -1,6 +1,7 @@
 let chai = require("chai");
 let logic = require("../logic");
 
+
 suite("Test date fucntion", function() {
 
     test("testing the date function", function() {
@@ -27,8 +28,7 @@ suite("Test review function", function() {
 
     test("testing review score function", function() {
 
-        let test[0].reviewScore = 9;
-        test[1].reviewScore = 5;
+        let test = [{reviewScore: 5}, {reviewScore:9}];
 
         let sum =  logic.newScore(test);
 
@@ -38,7 +38,7 @@ suite("Test review function", function() {
     test("testing review user check", function() {
 
         let user = "Thomas";
-        let reviews[0].userID = "Thomas";
+        let reviews = {userID: "Thomas"};
 
         let check = logic.checkUser(user, reviews);
 
