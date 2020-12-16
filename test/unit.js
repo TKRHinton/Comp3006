@@ -38,7 +38,7 @@ suite("Test review function", function() {
     test("testing review user check", function() {
 
         let user = "Thomas";
-        let reviews = {userID: "Thomas"};
+        let reviews = [{userID: "Thomas"}];
 
         let check = logic.checkUser(user, reviews);
 
