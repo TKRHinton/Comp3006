@@ -151,7 +151,7 @@
 
 
 <script>
-    <% if (session.user == 'none') { %>
+    <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
     navId.classList.add("hidden");
