@@ -28,6 +28,7 @@ module.exports.Game = Game;
 let reviewSchema = new mongoose.Schema({
 
     gameID: String,
+    gameName: String,
     userID: String,
     userName: String,
     reviewScore: String,

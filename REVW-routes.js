@@ -295,18 +295,28 @@ async function pageReview(request, response) {
                 class : "correct"
             };
 
-            await db.postReview(request.body.GameID,request.body.UserID,users[0].userName, request.body.reviewScore , date, request.body.reviewDescription);
-
+            await db.postReview(request.body.GameID,games[0].gameName,request.body.UserID,users[0].userName, request.body.reviewScore , date, request.body.reviewDescription);
             let reviews = await db.getReviews(games[0]._id);
             gamescore = logic.newScore(reviews);
 
             await db.updateGame(gamescore, games[0].id);
         }
     }
-
-    response.render("reviews", {"test": gamescore, "games": games, "date": date,"session": sess, "output": message, "reviews": reviews})
+    response.render("reviews", {"test": games[0].gameName, "games": games, "date": date,"session": sess, "output": message, "reviews": reviews})
 }
 
+
+
+async function pageProfile(request,response) {
+    let sess = request.session;
+    let users = await db.getUsers(sess.user);
+    let date = logic.newDate();
+
+    let userReviews = await db.getUserReviews(users[0].userName);
+
+    response.render("profile", {"users": users, "sess": sess, "date": date, "reviews": userReviews});
+
+}
 
 function coinFlipRoute(request, response) {
     let flip = logic.flipCoin();
@@ -332,7 +342,7 @@ function sumNumbers(request, response) {
 module.exports.coinFlipRoute = coinFlipRoute;
 module.exports.sumNumbers = sumNumbers;
 
-
+module.exports.pageProfile = pageProfile;
 module.exports.listAllUsers = listAllUsers;
 module.exports.pageHome = pageHome;
 module.exports.pageGames = pageGames;

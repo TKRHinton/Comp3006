@@ -57,8 +57,8 @@ async function deleteUser(username) {
     await models.User.deleteOne ({userName: username});
 }
 
-async function postReview(gameid, userid, username, score, date, description) {
-    await models.Review.create({gameID: gameid, userID: userid, userName: username, reviewScore: score, reviewDate: date , reviewDescription: description})
+async function postReview(gameid, gamename,userid, username, score, date, description) {
+    await models.Review.create({gameID: gameid, gameName: gamename,userID: userid, userName: username, reviewScore: score, reviewDate: date , reviewDescription: description})
 }
 
 async function updateGame(gamescore, id) {
@@ -84,6 +84,16 @@ async function getReviews(ID) {
     return await models.Review.find(filter);
 }
 
+async function  getUserReviews(username) {
+    let filter = {};
+    if (username)
+    {
+        filter.userName = username;
+    }
+    return await models.Review.find(filter);
+}
+
+module.exports.getUserReviews = getUserReviews;
 module.exports.updateGame = updateGame;
 module.exports.getReviews = getReviews;
 module.exports.getUsers = getUsers;
