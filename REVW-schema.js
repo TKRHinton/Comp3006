@@ -29,6 +29,7 @@ let reviewSchema = new mongoose.Schema({
 
     gameID: String,
     userID: String,
+    userName: String,
     reviewScore: String,
     reviewDate: String,
     reviewDescription: String

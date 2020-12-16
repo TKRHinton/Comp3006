@@ -256,11 +256,56 @@ async function pageReview(request, response) {
     let sess = request.session;
     let games = await db.getGames(request.body.gameName);
     let game = games.toString();
+    let reviews = await db.getReviews(games[0]._id);
+    let gamescore = 0;
 
-    response.render("reviews", {"test": request.body.gameName, "games": games, "date": date,"session": sess })
+
+
+    if (request.body.UserID == null) {
+        var message = {
+            message : ("Hidden"),
+            class : "hidden"
+        };
+    }
+    else if ((request.body.UserID == '') || (request.body.UserID == "none")) {
+        var message = {
+            message : ("Sorry You Need To Log In to create a review"),
+            class : "incorrect"
+        };
+    }
+    else {
+
+        let users = await db.getUsersID(request.body.UserID);
+
+        //check if user has logged in before
+        let reviewed = false;
+        if (reviews) {
+            reviewed = logic.checkUser(users[0]._id,reviews,);
+        }
+
+        if (reviewed == true) {
+            var message = {
+                message : ( " You have already submited a review " + users[0].userName),
+                class : "incorrect"
+            };
+        }
+        else {
+            var message = {
+                message : ( " Review Has Been Submited " + users[0].userName),
+                class : "correct"
+            };
+
+            await db.postReview(request.body.GameID,request.body.UserID,users[0].userName, request.body.reviewScore , date, request.body.reviewDescription);
+
+            let reviews = await db.getReviews(games[0]._id);
+            gamescore = logic.newScore(reviews);
+
+            await db.updateGame(gamescore, games[0].id);
+        }
+    }
+
+    response.render("reviews", {"test": gamescore, "games": games, "date": date,"session": sess, "output": message, "reviews": reviews})
 }
-
-
 
 
 function coinFlipRoute(request, response) {

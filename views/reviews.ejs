@@ -96,6 +96,60 @@
                 <p>Release | <%=  games[0].gameRelease%></p>
                 <p><%=  games[0].gameDescription%></p>
             </div>
+        </div>
+
+        <button class="accordion">Make A Review</button>
+        <div class="panel">
+
+            <h1> Enter Details here:</h1>
+
+            <form action="/reviewRequest" method="post">
+
+                <input style="padding: 1px;" class="hidden" type="text" value="<%= session.userID%>"  name="UserID">
+                <input style="padding: 1px;" class="hidden" type="text"  value="<%= games[0]._id%>"name="GameID">
+                <input style="padding: 1px;" class="hidden" type="text" value="<%= games[0].gameName%>"  name="gameName">
+
+                <div class="container">
+                    <label for="gamePlatform"><b>Score</b> </label>
+                    <select class="selectScore" style="width: 15%" name="reviewScore" id="reviewScore">
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                        <option value="7"> 7 </option>
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10"> 10 </option>
+                    </select>
+                </div>
+                <div class="container">
+                    <label for="reviewDescription"><b></b></label>
+                    <input type="text" placeholder="Review" name="reviewDescription" minlength="2" maxlength="500" required>
+                </div>
+
+                <div class="container">
+                    <button type="submit">Submit Review </button>
+                </div>
+                <div id="res" class="alert <%= output.class %>">
+                    <%= output.message %>
+                </div>
+            </form>
+        </div>
+
+        <button class="accordion">See Other Reviews</button>
+        <div class="panel">
+            <% if (reviews) {%>
+            <% for (i=0; i<reviews.length; i++) { %>
+                <div class="review">
+                    <p id="reviewScore">  <%=reviews[i].reviewScore%></p>
+                    <p> User | <%= reviews[i].userName%></p>
+                    <p>Review | <%= reviews[i].reviewDescription%></p>
+
+                  </div>
+
+            <% } } %>
 
 
         </div>
@@ -108,6 +162,7 @@
     <article>
         <p><%= games %> </p>
         <p><%= test %> </p>
+        <p><%= output.message %> </p>
 
     </article>
 
@@ -132,7 +187,25 @@
 </footer>
 
 <script>
-    <% if (session.user == 'none') { %>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+
+<script>
+    <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
     navId.classList.add("hidden");

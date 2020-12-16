@@ -38,11 +38,19 @@ button {
 }
 
 .cardUnder {
-    padding: 0px 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     height: 350px;
-    width: 70%;
+    width: 75%;
     float: left;
+
+}
+
+.review {
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+    width: 90%;
+    float: left;
+    padding: 20px;
+    margin: 20px;
 
 }
 
@@ -60,3 +68,79 @@ button {
     padding: 15px;
     border-radius: 10px;
 }
+
+#reviewScore{
+    float: right;
+    background-color: #6c3;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+.hidden {
+    visibility: hidden;
+}
+
+form {
+    background-color:rgba(192,192,192,0.2);
+    color: black;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+
+}
+
+input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box
+}
+
+
+.selectScore{
+    position: relative;
+    padding: 8px 20px;
+    margin-left: 10px;
+}
+
+.selectScore select {
+    display: none;
+}
+
+button {
+    background-color: #814bc6;
+    color: white;
+    padding: 14px 20px;
+
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.incorrect{
+    background-color: #C6251B;
+    padding: 16px;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.correct{
+    background-color: #139e10;
+    padding: 16px;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+

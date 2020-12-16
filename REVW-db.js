@@ -19,6 +19,15 @@ async function getGames(gamename) {
     return await models.Game.find(filter);
 }
 
+async function getUsersID(ID) {
+    let filter = {};
+    if (ID)
+    {
+        filter._id = ID;
+    }
+    return await models.User.find(filter);
+}
+
 async function getUsersInfo(username, password) {
 
     let filter = {};
@@ -48,6 +57,14 @@ async function deleteUser(username) {
     await models.User.deleteOne ({userName: username});
 }
 
+async function postReview(gameid, userid, username, score, date, description) {
+    await models.Review.create({gameID: gameid, userID: userid, userName: username, reviewScore: score, reviewDate: date , reviewDescription: description})
+}
+
+async function updateGame(gamescore, id) {
+    await models.Game.updateOne({_id: id}, {$set: {gameScore: gamescore}})
+}
+
 async function postGame(gamename, gameplatform,gamegenre, gamedescription, gamescore, gamerelease, gameimage) {
 
     await models.Game.create({gameName: gamename, gamePlatform: gameplatform,gameGenre: gamegenre, gameDescription: gamedescription,
@@ -58,11 +75,23 @@ async  function deleteGame(gamename) {
     await models.Game.deleteOne ({gameName: gamename});
 }
 
+async function getReviews(ID) {
+    let filter = {};
+    if (ID)
+    {
+        filter.gameID = ID;
+    }
+    return await models.Review.find(filter);
+}
 
+module.exports.updateGame = updateGame;
+module.exports.getReviews = getReviews;
 module.exports.getUsers = getUsers;
+module.exports.getUsersID = getUsersID;
 module.exports.getUsersInfo = getUsersInfo;
 module.exports.postUser = postUser;
 module.exports.deleteUser = deleteUser;
 module.exports.postGame = postGame;
 module.exports.deleteGame = deleteGame;
 module.exports.getGames = getGames;
+module.exports.postReview = postReview;

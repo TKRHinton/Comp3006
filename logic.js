@@ -10,13 +10,14 @@ function addNumbers(number1, number2){
     return sum;
 }
 
-
+//check if date works
 function newDate() {
     let fulldate = new Date();//gets full current date
     let date = fulldate.getFullYear() + "-" + (fulldate.getMonth() + 1) + "-" + fulldate.getDate();
     return date;
 }
 
+//num of users == uisers length
 function adminStatitics(Users, Games)
 {
    // let [userNumber, adminNumber, gameNumber] = Array(3).fill(0);
@@ -85,7 +86,34 @@ function sortGames(message, games) {
     return sort;
 }
 
+//take two values and see if match
+function newScore(reviews) {
 
+    let total = 0;
+    for (i=0; i<reviews.length; i++) {
+        total += parseInt(reviews[i].reviewScore);
+    }
+
+    let sum = Math.round((total / reviews.length) * 10) / 10;
+
+    return sum.toString();
+}
+
+//send one value to check if true
+function checkUser(user, reviews) {
+
+    for(i=0; i<reviews.length; i++) {
+
+        if (user == reviews[i].userID)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+module.exports.checkUser = checkUser;
+module.exports.newScore = newScore;
 module.exports.flipCoin = flipCoin;
 module.exports.addNumbers = addNumbers;
 module.exports.newDate = newDate;

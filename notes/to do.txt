@@ -1,8 +1,5 @@
 
 Tuesday
-- create game page (change sort wwith differnt link)
-
-- Create game review page (shows one game , see reviews and make one)
 
 - Profile (shows info and reviews)
 
