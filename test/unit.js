@@ -23,3 +23,28 @@ suite("Test date fucntion", function() {
         chai.assert.equal(webDate, dateStr, "Date does not match");
     });
 });
+suite("Test review function", function() {
+
+    test("testing review score function", function() {
+
+        let test[0].reviewScore = 9;
+        test[1].reviewScore = 5;
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(sum, "7", "Numbers do not match");
+    });
+
+    test("testing review user check", function() {
+
+        let user = "Thomas";
+        let reviews[0].userID = "Thomas";
+
+        let check = logic.checkUser(user, reviews);
+
+
+
+        chai.assert.equal(check, true, "Function can't check user names");
+    });
+
+});
