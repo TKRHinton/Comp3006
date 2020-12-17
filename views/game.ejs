@@ -4,21 +4,11 @@
     <title> Reviews </title>
     <style>
 
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
     <link rel="stylesheet" href=" /CSS/game.css">
-
-    <script>
-        var url_string = window.location.href;
-        var url = new URL(url_string);
-        var genre = url.searchParams.get("genre");
-        var platfrom =  url.searchParams.get("platform");
-        var other =  url.searchParams.get("other");
-       // document.getElementById("ex").innerHTML = genre + platfrom + other;
-    </script>
 </head>
 
 <body>
@@ -65,7 +55,6 @@
         </div>
     </div>
 
-
     <a id="admin" href="http://localhost:9000/admin"> Admin</a>
     <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
 
@@ -74,19 +63,16 @@
         <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
 
     </div>
-
 </div>
 
 <div class="container">
 
     <section>
-
         <h1> Reviews </h1>
 
         <div class="row">
 
         <% for( i=0; i<sort.length; i++) {%>
-
 
             <div class="card">
                 <img id="gameImage" src="/Game-Images/<%= sort[i].gameImage %>" alt="Avatar" style="width:100%">
@@ -106,51 +92,18 @@
         <% } %>
         </div>
 
-
-
     </section>
 
-    <article>
-        <p id="ex"> </p>
-
-        <p><%= sort[0].gameImage %> </p>
-
-        <p> <%= url.genre%> </p>
-        <p> <%= url.platform%> </p>
-        <p> <%= url.other%> </p>
-
-    </article>
-
 </div>
 
 
-
-
-
-<div style="padding:16px">
-    <h3><%= games[1].gameName %></h3>
-
-    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
-
-</div>
 
 <footer>
 
     <p> Revw © | <%= date %> </p>
 </footer>
 
-
-<script>
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var genre = url.searchParams.get("genre");
-    var platfrom =  url.searchParams.get("platform");
-    var other =  url.searchParams.get("other");
-    document.getElementById("ex").innerHTML = genre + platfrom + other;
-</script>
-
-
-<script>
+<script>// checks if user is logged on or not
     <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
@@ -167,7 +120,7 @@
     navId.classList.add("hidden");
     <% }%>
 
-    <% if (session.admin == false) { %>
+    <% if((session.admin == null) ||  (session.admin == false) ){ %>
 
     navId = document.getElementById("admin");
     navId.classList.add("hidden");
@@ -179,9 +132,6 @@
 
     <% }%>
 </script>
-
-
 </body>
-
 
 </html>

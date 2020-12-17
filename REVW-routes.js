@@ -16,8 +16,6 @@ async function pageHome(request, response) {
     let sess = request.session;
     let date = logic.newDate();
 
-
-
     response.render("home", {"users": users, "session": sess, "date": date});
 }
 

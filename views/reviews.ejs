@@ -2,18 +2,13 @@
 <html>
 <head>
     <title> Review - <%= games[0].gameName %> </title>
-    <style>
 
-
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
     <link rel="stylesheet" href=" /CSS/review.css">
 
-
 </head>
-
 
 <body>
 <div class="navbar">
@@ -150,32 +145,9 @@
 
         </div>
 
-
-
-
     </section>
 
-    <article>
-        <p><%= games %> </p>
-        <p><%= test %> </p>
-        <p><%= output.message %> </p>
-
-    </article>
-
 </div>
-
-
-
-<div style="padding:16px">
-
-
-    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
-
-</div>
-
-
-
-
 
 <footer>
 
@@ -200,7 +172,7 @@
 </script>
 
 
-<script>
+<script>// checks if user is logged on or not
     <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
@@ -217,7 +189,7 @@
     navId.classList.add("hidden");
     <% }%>
 
-    <% if (session.admin == false) { %>
+    <% if((session.admin == null) ||  (session.admin == false) ){ %>
 
     navId = document.getElementById("admin");
     navId.classList.add("hidden");

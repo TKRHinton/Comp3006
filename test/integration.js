@@ -2,7 +2,6 @@ let chai = require("chai");
 let chaiHttp = require("chai-http");
 let server = require("../REVW-app");
 let logic = require("../logic");
-let db = require("../REVW-db");
 
 chai.use(chaiHttp);
 

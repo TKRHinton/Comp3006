@@ -2,16 +2,11 @@
 <html>
 <head>
     <title> Admin </title>
-    <style>
-
-
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
     <link rel="stylesheet" href="/CSS/admin.css">
 </head>
-
 
 
 <body>
@@ -57,8 +52,6 @@
             </div>
         </div>
     </div>
-
-
     <a id="admin" href="http://localhost:9000/admin"> Admin</a>
     <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
 
@@ -67,7 +60,6 @@
         <a id="signOut" href="http://localhost:9000/signOut"> Sign Out</a>
 
     </div>
-
 </div>
 
 <div class="container">
@@ -89,7 +81,6 @@
                     <input type="checkbox" id="admin" name="admin" value="True">
                     <label for ="admin"> Admin?</label>
                 </div>
-
                 <div class="container">
 
                     <label for="psw"><b></b></label>
@@ -136,16 +127,6 @@
                         <option value="Strategy"> Strategy </option>
                         <option value="Sports"> Sports </option>
                     </select>
-
-
-
-
-                <!--
-                    <label for="gamePlatform"><b></b></label>
-                    <input type="text" placeholder="Platform" name="gamePlatform" minlength="2" maxlength="28" required>
-
-                    <label for="gameGenre"><b></b></label>
-                    <input type="text" placeholder="Genre" name="gameGenre" minlength="2" maxlength="28" required> -->
                 </div>
 
                 <div class="container">
@@ -190,7 +171,6 @@
                </tbody>
            </table>
 
-
             <form action="/adminRequest" method="post">
                 <div class="container">
                     <label for="username"><b></b></label>
@@ -202,7 +182,6 @@
                     <%= outputDelete.message %>
                 </div>
             </form>
-
         </div>
 
         <button class="accordion">Remove Game</button>
@@ -224,7 +203,6 @@
                 </tbody>
             </table>
 
-
             <form action="/adminRequest" method="post">
                 <div class="container">
                     <label for="username"><b></b></label>
@@ -233,8 +211,6 @@
                 </div>
             </form>
         </div>
-
-
 
     </section>
 
@@ -247,25 +223,10 @@
         <p> Number Of Games: <%= stats.gameNum %></p>
         <p> Number Of Reviews: </p>
         <p> Average Reviews Per Game: </p>
-
-
-
     </article>
-
-</div>
-
-
-
-
-
-<div style="padding:16px">
-
-    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
-
 </div>
 
 <footer>
-
     <p> Revw © | <%= date %> </p>
 </footer>
 
@@ -286,8 +247,8 @@
     }
 </script>
 
-<script>
-    <% if (session.user == 'none') { %>
+<script>// checks if user is logged on or not
+    <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
     navId.classList.add("hidden");
@@ -303,7 +264,7 @@
     navId.classList.add("hidden");
     <% }%>
 
-    <% if (session.admin == false) { %>
+    <% if((session.admin == null) ||  (session.admin == false) ){ %>
 
     navId = document.getElementById("admin");
     navId.classList.add("hidden");

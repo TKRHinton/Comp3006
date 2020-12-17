@@ -9,14 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
-
-
-
-
-
 </head>
-
-
 
 <body>
 <div class="navbar">
@@ -50,18 +43,15 @@
                     <a href="http://localhost:9000/games?genre=Null&platform=Nintendo&other=Null">Nintendo</a>
                     <a href="http://localhost:9000/games?genre=Null&platform=PC&other=Null">PC</a>
                 </div>
-
                 <div class="column">
                     <h3>Other</h3>
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=New">New Releases</a>
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Top">Top Rated </a>
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Popular">Popular</a>
-
                 </div>
             </div>
         </div>
     </div>
-
 
     <a id="admin" href="http://localhost:9000/admin"> Admin</a>
     <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
@@ -79,8 +69,6 @@
 <section>
     <p>example </p>
 
-
-
 </section>
 
 <article>
@@ -89,23 +77,11 @@
 
 </div>
 
-
-
-
-
-<div style="padding:16px">
-    <h3><%= users[1].userName %></h3>
-
-    <p id="result"> Name: <%= session.user %> Admin:  <%= session.admin %> ID: <%= session.userID%></p>
-
-</div>
-
 <footer>
-
     <p> Revw © | <%= date %> </p>
 </footer>
 
-<script>
+<script>// checks if user is logged on or not
     <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
@@ -122,11 +98,10 @@
     navId.classList.add("hidden");
     <% }%>
 
-    <% if (session.admin == false) { %>
+    <% if((session.admin == null) ||  (session.admin == false) ){ %>
 
     navId = document.getElementById("admin");
     navId.classList.add("hidden");
-
     <% } else { %>
 
     navId = document.getElementById("admin");
@@ -134,8 +109,6 @@
 
     <% }%>
 </script>
-
-
 </body>
 
 
