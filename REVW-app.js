@@ -15,11 +15,11 @@ let port = 9000;
 // Initialise the app.
 app = express();
 
+//cookie to store user when they log in
 app.use(session({
     secret: "UserLog",
     resave: true,
     saveUninitialized: true,
-   // cookie: { user: 'none', admin: 'none'}
     user: 'none',
     admin: false,
     userID: 'none'
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, "files")));
 // Setup the app to use EJS templates.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 // Enable processing of post forms.
 app.use(express.urlencoded({extended: true}));
 

@@ -4,11 +4,12 @@ let session = require("express-session");
 let bcrypt = require('bcryptjs');
 let logic = require("./logic");
 
+
 async function  listAllUsers(request, response) {
 
     let users = await db.getUsers();
     response.setHeader("content-type", "text/json");
-    response.send({"users": users});
+    response.send({"users": users});//generates json list of all users
 }
 
 async function pageHome(request, response) {
@@ -24,6 +25,7 @@ async function pageGames(request, response) {
     let sess = request.session;
     let date = logic.newDate();
 
+    //gets url and values from url
     var url_string = request.protocol + '://' + request.get('host') + request.originalUrl;
     var url = new URL(url_string);
     var genre = url.searchParams.get("genre");
@@ -52,25 +54,30 @@ async function pageAdmin(request, response) {
     if (request.body.userName == null) {
         var messageData = {
             message : ("hidden"),
-            class : "hidden" };
+            class : "hidden"
+        };
     }
     else if(user !== '') {
         var messageData = {
             message : ("Sorry this username has already been taken " + request.body.admin),
-            class : "incorrect" };
+            class : "incorrect"
+        };
     }
     else if (request.body.userPassword != request.body.userPassword2) {
         var messageData = {
             message: "Passwords are not the same please try again",
-            class: "incorrect" };
+            class: "incorrect"
+        };
     }
     else {
         var messageData = {
             message : (request.body.userName + " , has been added"),
-            class : "correct" };
+            class : "correct"
+        };
         admin = false;
         if (request.body.admin == "True") {admin = true;};
 
+        //create hashed password and sends data to database
         let hashedPassword = await hash.hashPassword(request.body.userPassword);
         users = await db.postUser(request.body.userName, hashedPassword, admin);
     }
@@ -84,19 +91,22 @@ async function pageAdmin(request, response) {
         if (user != '')  {
             var messageDataDelete = {
                 message : (users[0].userName + " Has Been Deleted"),
-                class : "correct" };
+                class : "correct"
+            };
             await db.deleteUser(users[0].userName);
         }
         else {
             var messageDataDelete = {
                 message : ("Sorry You have type the wrong name please try again"),
-                class : "incorrect" };
+                class : "incorrect"
+            };
         }
     }
     else {
         var messageDataDelete = {
             message : ("Hidden"),
-            class : "hidden" };
+            class : "hidden"
+        };
     }
 
     //For Adding Game
@@ -107,13 +117,16 @@ async function pageAdmin(request, response) {
         if (game != '') {
             var messageDataGame = {
                 message : ("Sorry game is already in database"),
-                class : "incorrect" };
+                class : "incorrect"
+            };
         }
         else {
             var messageDataGame = {
                 message : (request.body.gameName + " Game has been added"),
-                class : "correct" };
+                class : "correct"
+            };
 
+            //sends game infomation to dataabse
             await db.postGame(request.body.gameName,request.body.gamePlatform,request.body.gameGenre ,request.body.gameDescription, "0"
             ,request.body.gameRelease.toString(), request.body.gameImage);
         }
@@ -121,7 +134,8 @@ async function pageAdmin(request, response) {
     else {
         var messageDataGame = {
             message : ("Hidden"),
-            class : "hidden" };
+            class : "hidden"
+        };
     }
 
     //For Removing Game
@@ -133,25 +147,28 @@ async function pageAdmin(request, response) {
         if (game != '')  {
             var messageDataDeleteGame = {
                 message : (games[0].gameName + " Has Been Deleted"),
-                class : "correct" };
+                class : "correct"
+            };
             await db.deleteGame(games[0].gameName);
         }
         else {
             var messageDataDeleteGame = {
                 message : ("Sorry You have type the wrong name please try again"),
-                class : "incorrect" };
+                class : "incorrect"
+            };
         }
     }
     else {
         var messageDataDeleteGame = {
             message : ("Hidden"),
-            class : "hidden" };
+            class : "hidden"
+        };
     }
 
     games = await db.getGames(request.body.platform);
     users = await db.getUsers(request.body.platform);
 
-    //for statisics
+    //gets statisiscs for admin page
     let statistics = logic.adminStatitics(users, games);
 
     response.render("admin", {"users": users,"games": games ,"session": sess, "date": date, "output": messageData,
@@ -167,8 +184,8 @@ async function pageSignOut(request, response) {
 
     request.session = sess;
 
+    //will take user back to home page
     pageHome(request,response);
- //   response.render("home", {"users": users, "session": sess});
 }
 
 async function pageSignIn(request, response) {
@@ -183,10 +200,8 @@ async function pageSignIn(request, response) {
     }
     else if(users.length == 1) {
 
+        //checks if users input is the same as stored hashed password
         const check = await hash.comparePassword(request.body.userPassword, users[0].userPassword);
-       // let check = bcrypt.compare(request.body.userPassword, users[0].userPassword, function (err,result) {
-       //     return result;
-       // });
 
         if (check == true){
             let sess = request.session;

@@ -1,6 +1,7 @@
 let bcrypt = require('bcryptjs');
 let saltrounds = 10;
 
+//creates hashed password
 async function hashPassword(password)
 {
     let hashPassword = await bcrypt.hash(password, 10);
@@ -8,6 +9,7 @@ async function hashPassword(password)
     return hashPassword;
 }
 
+//compares db password with user input
 async function comparePassword(password, hashPassword) {
 
     let isMatch = await bcrypt.compare(password, hashPassword);

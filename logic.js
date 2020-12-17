@@ -1,15 +1,14 @@
 
-//check if date works
+//creates current date
 function newDate() {
     let fulldate = new Date();//gets full current date
     let date = fulldate.getFullYear() + "-" + (fulldate.getMonth() + 1) + "-" + fulldate.getDate();
     return date;
 }
 
-//num of users == uisers length
+//generates admin statisics
 function adminStatitics(Users, Games)
 {
-   // let [userNumber, adminNumber, gameNumber] = Array(3).fill(0);
     let userNumber = 0;
     let adminNumber = 0;
     let gameNumber = 0;
@@ -25,6 +24,8 @@ function adminStatitics(Users, Games)
         lengthNum += Users[i].userName.length;
 
     }
+
+    //math to cal average length of username
     lengthNum = lengthNum / userNumber;
     lengthNum = Math.round(lengthNum * 100) / 100;
 
@@ -32,6 +33,7 @@ function adminStatitics(Users, Games)
         gameNumber++;
     }
 
+    //creates array to return
     var message = {
         userNum : userNumber,
         lenNum : lengthNum,
@@ -42,6 +44,7 @@ function adminStatitics(Users, Games)
     return message;
 }
 
+//generates game array including only selected genre/platform
 function sortGames(message, games) {
 
     let sort = [];
@@ -51,6 +54,7 @@ function sortGames(message, games) {
         return games;
     }
 
+    //if genre was selected
     if (message.genre != 'Null') {
 
         for (i=0; i<games.length; i++) {
@@ -62,6 +66,7 @@ function sortGames(message, games) {
         }
     }
 
+    //if platform was selected
     if (message.platform != 'Null') {
         for (i=0; i<games.length; i++) {
 
@@ -75,7 +80,7 @@ function sortGames(message, games) {
     return sort;
 }
 
-//take two values and see if match
+//generates new avarage score after each review
 function newScore(reviews) {
 
     let total = 0;
@@ -88,7 +93,7 @@ function newScore(reviews) {
     return sum.toString();
 }
 
-//send one value to check if true
+//checks if user has already submited a review
 function checkUser(user, reviews) {
 
     for(i=0; i<reviews.length; i++) {
@@ -100,6 +105,7 @@ function checkUser(user, reviews) {
     }
     return false;
 }
+
 
 module.exports.checkUser = checkUser;
 module.exports.newScore = newScore;
