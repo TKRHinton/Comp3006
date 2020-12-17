@@ -36,7 +36,7 @@ suite("Intergration test for /games", function() {
 
     test("Test GET /games", function() {
         let app = server.app;
-        let games = await db.getGames();
+        let games = await db.getGames(request.body.gameName);
 
         chai.request(app).get("/home").end(function(error, response) {
             chai.assert.equal(response.status, 200, "Wrong status code");
@@ -50,7 +50,7 @@ suite("Intergration test for /admin", function() {
 
     test("Testing for games", function() {
         let app = server.app;
-        let games = await db.getGames();
+        let games = await db.getGames(request.body.gameName);
 
         chai.request(app).get("/home").end(function(error, response) {
             chai.assert.equal(response.status, 200, "Wrong status code");
@@ -61,7 +61,7 @@ suite("Intergration test for /admin", function() {
 
     test("Testing for users", function() {
         let app = server.app;
-        let users = await db.getUsers();
+        let users = await db.getUsers(request.body.gameName);
 
         chai.request(app).get("/home").end(function(error, response) {
             chai.assert.equal(response.status, 200, "Wrong status code");
