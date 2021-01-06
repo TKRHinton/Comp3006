@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Profile</title>
+    <title> Home </title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
-    <link rel="stylesheet" href=" /CSS/review.css">
     <link rel="stylesheet" href=" /CSS/chat.css">
 
+    <style>
+
+    </style>
 </head>
 
 <body>
+<script>
+    $(function() {
+        let socket = io("http://localhost:9000");
+        socket.on("received message", function(msg) {
+
+
+            $("#board").append("<p class=\"message\">"  + "You: "+ msg + "</p>");
+        });
+        $("#send").click(function() {
+
+            let msg = $("#msg").val();
+
+
+            $("#board").append("<p class=\"message sent\">" + msg + "</p>");
+
+            msg = " <%= session.user %> (Admin):  " + msg;
+            socket.emit("send message", msg);
+
+            $("#msg").val("");
+        });
+    });
+</script>
+
 <div class="navbar">
     <a href="http://localhost:9000/home" id="logo">
         <img src="/Images/logo.png" alt="Logo of REVW">
@@ -49,12 +74,10 @@
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=New">New Releases</a>
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Top">Top Rated </a>
                     <a href="http://localhost:9000/games?genre=Null&platform=Null&other=Popular">Popular</a>
-
                 </div>
             </div>
         </div>
     </div>
-
 
     <a id="admin" href="http://localhost:9000/admin"> Admin</a>
     <a  id="signIn" href="http://localhost:9000/signIn"> Sign In</a>
@@ -69,64 +92,49 @@
 
 <div class="container">
 
-    <section>
-        <h1> Profile Page </h1>
 
-        <p> Hello  <%= users[0].userName %></p>
 
-        <div class="row">
+    <article style="float:left; ">
 
-            <button class="accordion active">Your Reviews</button>
-            <div class="panel" style="display: block">
-                <% if (reviews) {%>
-                    <% for (i=0; i<reviews.length; i++) { %>
-                    <div class="review">
-                        <p id="reviewScore">  <%=reviews[i].reviewScore%></p>
-                        <p> Game | <%= reviews[i].gameName%></p>
-                        <p>Review | <%= reviews[i].reviewDescription%></p>
+        <article>
 
-                    </div>
+            <div id="chat">
+                <h2>Need Help? Send a message</h2>
+                <p>Message: <input type="text" id="msg" /><button id="send">Send</button></p>
 
-                <% } } %>
+                <div id="messages">
+                    <!-- This is where the messages will be placed -->
+                </div>
+
             </div>
-        </div>
+        </article>
 
-    </section>
+
+</div>
+    </article>
+
+
+
 
 
 </div>
 
 <footer>
-
     <p> Revw © | <%= date %> </p>
 </footer>
 
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
+<script>// checks if user is logged on or not
+    <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    }
-</script>
-
-
-<script>
-    <% if ((sess.user == null) || (sess.user == 'none')  ) { %>
 
     let navId = document.getElementById("loggedIn");
     navId.classList.add("hidden");
 
     navId = document.getElementById("signIn");
     navId.classList.remove("hidden");
+
+    navId = document.getElementById("chat");
+    navId.classList.add("hidden");
     <% } else { %>
 
     let navId = document.getElementById("loggedIn");
@@ -134,13 +142,15 @@
 
     navId = document.getElementById("signIn");
     navId.classList.add("hidden");
+
+    navId = document.getElementById("chat");
+    navId.classList.remove("hidden");
     <% }%>
 
-    <% if (sess.admin == false) { %>
+    <% if((session.admin == null) ||  (session.admin == false) ){ %>
 
     navId = document.getElementById("admin");
     navId.classList.add("hidden");
-
     <% } else { %>
 
     navId = document.getElementById("admin");
@@ -148,8 +158,6 @@
 
     <% }%>
 </script>
-
-
 </body>
 
 

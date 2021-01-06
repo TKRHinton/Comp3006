@@ -2,16 +2,42 @@
 <html>
 <head>
     <title> Home </title>
-    <style>
 
-
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
+    <link rel="stylesheet" href=" /CSS/chat.css">
+
+    <style>
+
+    </style>
 </head>
 
 <body>
+<script>
+    $(function() {
+        let socket = io("http://localhost:9000");
+        socket.on("received message", function(msg) {
+
+
+            $("#messages").append("<p class=\"message\">" + msg + "</p>");
+        });
+        $("#send").click(function() {
+
+            let msg = $("#msg").val();
+
+
+            $("#messages").append("<p class=\"message sent\">"+ "You: " + msg + "</p>");
+
+            msg = " <%= session.user %>:  " + msg;
+            socket.emit("send message", msg);
+
+            $("#msg").val("");
+        });
+    });
+</script>
+
 <div class="navbar">
     <a href="http://localhost:9000/home" id="logo">
         <img src="/Images/logo.png" alt="Logo of REVW">
@@ -71,9 +97,20 @@
 
 </section>
 
+
 <article>
 
+    <div id="chat">
+    <h2>Need Help? Send a message</h2>
+    <p>Message: <input type="text" id="msg" /><button id="send">Send</button></p>
+
+    <div id="messages">
+        <!-- This is where the messages will be placed -->
+    </div>
+
+    </div>
 </article>
+
 
 </div>
 
@@ -84,11 +121,15 @@
 <script>// checks if user is logged on or not
     <% if ((session.user == null) || (session.user == 'none')  ) { %>
 
+
     let navId = document.getElementById("loggedIn");
     navId.classList.add("hidden");
 
     navId = document.getElementById("signIn");
     navId.classList.remove("hidden");
+
+    navId = document.getElementById("chat");
+    navId.classList.add("hidden");
     <% } else { %>
 
     let navId = document.getElementById("loggedIn");
@@ -96,6 +137,9 @@
 
     navId = document.getElementById("signIn");
     navId.classList.add("hidden");
+
+    navId = document.getElementById("chat");
+    navId.classList.remove("hidden");
     <% }%>
 
     <% if((session.admin == null) ||  (session.admin == false) ){ %>

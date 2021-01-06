@@ -5,9 +5,7 @@ let path = require("path");
 let routes = require("./REVW-routes");
 let session = require("express-session");
 let socketIo = require("socket.io");
-
-
-
+let http = require("http");
 
 //connection to the db
 let url = "mongodb://localhost:27017/revwdb";
@@ -16,6 +14,9 @@ let port = 9000;
 
 // Initialise the app.
 app = express();
+
+//set up socket io
+server = http.createServer(app);
 
 //cookie to store user when they log in
 app.use(session({
@@ -27,6 +28,7 @@ app.use(session({
     userID: 'none'
 }));
 
+
 // Set up the static files.
 app.use(express.static(path.join(__dirname, "files")));
 
@@ -37,16 +39,23 @@ app.set("view engine", "ejs");
 // Enable processing of post forms.
 app.use(express.urlencoded({extended: true}));
 
-//socket io for chat
+//socket io for chat feature
 let io = socketIo(server);
 io.on("connection", function(socket) {
+
     socket.on("send message", function(msg) {
+
         socket.broadcast.emit("received message", msg);
+
     });
+
 });
+
+
 
 module.exports.app = app;
 
+app.get("/adminChat", routes.pagechat);
 app.get("/users", routes.listAllUsers);
 app.get("/home", routes.pageHome);
 app.get("/admin", routes.pageAdmin);
@@ -62,16 +71,24 @@ app.post('/signInAttempt', routes.pageSignIn);
 app.post('/signUpAttempt', routes.pageSignUp);
 app.post('/adminRequest', routes.pageAdmin);
 
-
 //listens on port 9000
-var server = app.listen(port, function() {
-    console.log("Listening on " + port);
+server.listen(9000, function() {
+    console.log("Listening on 9000");
 })
 
-function close() {
-    server.close(function () {
-        console.log("Server Closing");
-    });
-};
+
+
+
+
+//listens on port 9000
+//var server = app.listen(port, function() {
+//    console.log("Listening on " + port);
+//})
+
+//function close() {
+//    server.close(function () {
+ //       console.log("Server Closing");
+//    });
+//};
 
 //close();

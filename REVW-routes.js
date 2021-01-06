@@ -20,6 +20,14 @@ async function pageHome(request, response) {
     response.render("home", {"users": users, "session": sess, "date": date});
 }
 
+async function pagechat(request, response) {
+    let users = await db.getUsers(request.body.platform);
+    let sess = request.session;
+    let date = logic.newDate();
+
+    response.render("adminChat", {"users": users, "session": sess, "date": date});
+}
+
 async function pageGames(request, response) {
     let games = await db.getGames(request.body.platform);
     let sess = request.session;
@@ -337,6 +345,7 @@ async function pageProfile(request,response) {
 module.exports.pageProfile = pageProfile;
 module.exports.listAllUsers = listAllUsers;
 module.exports.pageHome = pageHome;
+module.exports.pagechat = pagechat;
 module.exports.pageGames = pageGames;
 module.exports.pageAdmin = pageAdmin;
 module.exports.pageSignIn = pageSignIn;

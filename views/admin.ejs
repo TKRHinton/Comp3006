@@ -3,9 +3,11 @@
 <head>
     <title> Admin </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
     <link rel="stylesheet" href="/CSS/admin.css">
+    <link rel="stylesheet" href=" /CSS/chat.css">
 </head>
 
 
@@ -223,6 +225,9 @@
         <p> Number Of Games: <%= stats.gameNum %></p>
         <p> Number Of Reviews: </p>
         <p> Average Reviews Per Game: </p>
+
+        <button onclick="window.location.href='/adminChat'">See Chat</button>
+
     </article>
 </div>
 

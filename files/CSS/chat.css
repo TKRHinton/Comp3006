@@ -1,0 +1,22 @@
+
+#messages {
+    width: 430px;
+    min-height: 500px;
+    border-radius: 25px;
+    padding: 15px;
+}
+.message {
+    width: 300px;
+    margin: 5px;
+    background-color: #aaff69;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333333;
+}
+.sent {
+    margin-left: 115px;
+    background-color: #ffdd9a;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333333;
+}
