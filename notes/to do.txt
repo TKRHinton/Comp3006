@@ -1,12 +1,14 @@
 
-Tuesday
+- unit tests for reviews admin, colours for review score
 
-- Profile (shows info and reviews)
+- intergration 
 
-- Tests for functions 
+- create home page
 
-- Comments and fix bugs
+- statisics for reviews
 
 - create chat function
+
+- write up report
 
 - create questionare

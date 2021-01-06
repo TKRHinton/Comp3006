@@ -9,11 +9,13 @@ npm install save express-session
 npm install save -g mocha
 npm install save chai
 npm install save chai-http
+npm install socket.io
 
 cd C:\Users\Theon\Documents\GitHub\Comp3006
 nodemon REVW-app.js
 node REVW-app.js
 
+mocha -ui tdd test/
 
 show databases
 use revwdb
