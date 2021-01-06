@@ -4,6 +4,8 @@ let mongoose = require("mongoose");
 let path = require("path");
 let routes = require("./REVW-routes");
 let session = require("express-session");
+let socketIo = require("socket.io");
+
 
 
 
@@ -34,6 +36,14 @@ app.set("view engine", "ejs");
 
 // Enable processing of post forms.
 app.use(express.urlencoded({extended: true}));
+
+//socket io for chat
+let io = socketIo(server);
+io.on("connection", function(socket) {
+    socket.on("send message", function(msg) {
+        socket.broadcast.emit("received message", msg);
+    });
+});
 
 module.exports.app = app;
 

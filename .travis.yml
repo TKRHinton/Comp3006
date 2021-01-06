@@ -11,3 +11,4 @@ install:
 - npm install ejs
 - npm install express-session
 - npm install bcryptjs --save
+- npm install socket.io
