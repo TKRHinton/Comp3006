@@ -3,11 +3,19 @@
 function newDate() {
     let fulldate = new Date();//gets full current date
     let day = fulldate.getDate();
+    let month = fulldate.getMonth() + 1;
+
+    if (month < 10)
+    {
+        month = "0" + month;
+    }
+
+
     if (day < 10)
     {
         day = "0" + day;
     }
-    let date = fulldate.getFullYear() + "-" + (fulldate.getMonth() + 1) + "-" + day;
+    let date = fulldate.getFullYear() + "-" + month + "-" + day;
     return date;
 }
 
