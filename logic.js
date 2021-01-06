@@ -2,7 +2,12 @@
 //creates current date
 function newDate() {
     let fulldate = new Date();//gets full current date
-    let date = fulldate.getFullYear() + "-" + (fulldate.getMonth() + 1) + "-" + fulldate.getDate();
+    let day = fulldate.getDate();
+    if (day < 10)
+    {
+        day = "0" + day;
+    }
+    let date = fulldate.getFullYear() + "-" + (fulldate.getMonth() + 1) + "-" + day;
     return date;
 }
 
