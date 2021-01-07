@@ -52,7 +52,6 @@ io.on("connection", function(socket) {
 });
 
 
-
 module.exports.app = app;
 
 app.get("/adminChat", routes.pagechat);
@@ -77,20 +76,3 @@ app.post('/adminRequest', routes.pageAdmin);
 server.listen(9000, function() {
     console.log("Listening on 9000");
 })
-
-
-
-
-
-//listens on port 9000
-//var server = app.listen(port, function() {
-//    console.log("Listening on " + port);
-//})
-
-//function close() {
-//    server.close(function () {
- //       console.log("Server Closing");
-//    });
-//};
-
-//close();
