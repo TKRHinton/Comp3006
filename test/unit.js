@@ -87,8 +87,6 @@ suite("Test Check User", function() {
 
         let check = logic.checkUser(user,reviews);
 
-        let sum =  logic.newScore(test);
-
         chai.assert.equal(check, false, "check has not worked");
     });
 
@@ -99,8 +97,6 @@ suite("Test Check User", function() {
         let user = "Archie";
 
         let check = logic.checkUser(user,reviews);
-
-        let sum =  logic.newScore(test);
 
         chai.assert.equal(check, true, "check has not worked");
     });
