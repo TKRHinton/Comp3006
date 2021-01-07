@@ -1,6 +1,6 @@
 let chai = require("chai");
 let logic = require("../logic");
-
+let hash = require("./hashing.js");
 
 suite("Test date fucntion", function() {
 
@@ -24,6 +24,7 @@ suite("Test date fucntion", function() {
         chai.assert.equal(webDate, dateStr, "Date does not match");
     });
 });
+
 suite("Test review function", function() {
 
     test("testing review score function", function() {
@@ -48,3 +49,28 @@ suite("Test review function", function() {
     });
 
 });
+
+suite("Test hashing functions", function() {
+
+
+    test("hashed the string thomas", function() {
+
+        let test = [{reviewScore: 5}, {reviewScore:9}];
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(sum, "7", "Numbers do not match");
+    });
+
+
+    test("hashed the word 1q2w3e4r", function() {
+
+        let hashedWord = hash.hashPassword("1q2w3e4r");
+
+        chai.assert.equal(hashedWord, "7", hashedWord);
+    });
+
+});
+
+
+
