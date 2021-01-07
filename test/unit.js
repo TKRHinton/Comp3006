@@ -1,6 +1,5 @@
 let chai = require("chai");
 let logic = require("../logic");
-let hash = require("../hashing.js");
 
 suite("Test date fucntion", function() {
 
@@ -47,13 +46,12 @@ suite("Test review function", function() {
 
         chai.assert.equal(check, true, "Function can't check user names");
     });
-
 });
 
-suite("Test hashing functions", function() {
 
+suite("Test Admin Statisitcs", function() {
 
-    test("hashed the string thomas", function() {
+    test("testing review score function", function() {
 
         let test = [{reviewScore: 5}, {reviewScore:9}];
 
@@ -63,14 +61,49 @@ suite("Test hashing functions", function() {
     });
 
 
-    test("hashed the word 1q2w3e4r", function() {
+});
 
-        let hashedWord = hash.hashPassword("1q2w3e4r");
+suite("Test Sort Games", function() {
 
-        chai.assert.equal(hashedWord, "7", hashedWord);
+    test("testing review score function", function() {
+
+        let test = [{reviewScore: 5}, {reviewScore:9}];
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(sum, "7", "Numbers do not match");
     });
+
 
 });
 
+suite("Test Check User", function() {
+
+    test("If User hasn't Reviewed", function() {
+
+        let reviews = [{userID: "Thomas"}, {userID: "James"}];
+
+        let user = "Archie";
+
+        let check = logic.checkUser(user,reviews);
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(check, false, "check has not worked");
+    });
+
+    test("If User has Reviewed", function() {
+
+        let reviews = [{userID: "Thomas"}, {userID: "Archie"}];
+
+        let user = "Archie";
+
+        let check = logic.checkUser(user,reviews);
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(check, true, "check has not worked");
+    });
 
 
+});
