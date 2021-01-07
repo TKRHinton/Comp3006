@@ -35,16 +35,34 @@ suite("Test review function", function() {
         chai.assert.equal(sum, "7", "Numbers do not match");
     });
 
-    test("testing review user check", function() {
+    test("testing review score function 2", function() {
+
+        let test = [{reviewScore: 8}, {reviewScore:10}, {reviewScore:4}, {reviewScore:2}];
+
+        let sum =  logic.newScore(test);
+
+        chai.assert.equal(sum, "6", "Numbers do not match");
+    });
+
+
+    test("testing review user check (correct user)", function() {
 
         let user = "Thomas";
         let reviews = [{userID: "Thomas"}];
 
         let check = logic.checkUser(user, reviews);
 
-
-
         chai.assert.equal(check, true, "Function can't check user names");
+    });
+
+    test("testing review user check (wrong user)", function() {
+
+        let user = "Thomas";
+        let reviews = [{userID: "James"}];
+
+        let check = logic.checkUser(user, reviews);
+
+        chai.assert.equal(check, false, "Function can't check user names");
     });
 });
 
@@ -63,19 +81,6 @@ suite("Test Admin Statisitcs", function() {
 
 });
 
-suite("Test Sort Games", function() {
-
-    test("testing review score function", function() {
-
-        let test = [{reviewScore: 5}, {reviewScore:9}];
-
-        let sum =  logic.newScore(test);
-
-        chai.assert.equal(sum, "7", "Numbers do not match");
-    });
-
-
-});
 
 suite("Test Check User", function() {
 
