@@ -7,6 +7,7 @@
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     <link rel="stylesheet" href=" /CSS/Nav.css">
     <link rel="stylesheet" href=" /CSS/main.css">
+    <link rel="stylesheet" href=" /CSS/game.css">
     <link rel="stylesheet" href=" /CSS/chat.css">
 
     <style>
@@ -93,7 +94,34 @@
 <div class="container">
 
 <section>
-    <p>example </p>
+    <h1> REVW </h1>
+
+    <p> Welcome to REVW here you can see all the current games and reviews</p>
+
+    <br> <br>
+    <h1> Check out games out now </h1>
+
+    <div class="row">
+
+        <% for( i=0; i<4; i++) {%>
+
+            <div class="card">
+                <img id="gameImage" src="/Game-Images/<%= sort[i].gameImage %>" alt="Avatar" style="width:100%">
+                <p id="gameScore"><%= sort[i].gameScore %></p>
+                <div class="cardUnder">
+                    <h2><b><%= sort[i].gameName  %></b></h2>
+                    <p>Platform | <%= sort[i].gamePlatform%> </p>
+                    <p>Genre | <%= sort[i].gameGenre%></p>
+                    <p>Release | <%= sort[i].gameRelease%></p>
+                    <p><%= sort[i].gameDescription%></p>
+                    <form action="/review" method="post">
+                        <button type="submit" name="gameName" value="<%= sort[i].gameName%>"> More </button>
+                    </form>
+
+                </div>
+            </div>
+        <% } %>
+    </div>
 
 </section>
 
