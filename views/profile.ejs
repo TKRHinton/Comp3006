@@ -84,7 +84,6 @@
                         <p id="reviewScore">  <%=reviews[i].reviewScore%></p>
                         <p> Game | <%= reviews[i].gameName%></p>
                         <p>Review | <%= reviews[i].reviewDescription%></p>
-                        <p>test | <%= test %></p>
                         <form action="/profileDelete" method="post">
                             <input style="padding: 0px;" class="hidden" type="text" value="<%= reviews[i]._id%>"  name="reviewID">
 
