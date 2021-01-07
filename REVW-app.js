@@ -65,6 +65,8 @@ app.get("/signOut", routes.pageSignOut);
 app.get("/games", routes.pageGames);
 app.get("/profile", routes.pageProfile);
 
+
+app.post('/profileDelete', routes.pageProfile);
 app.post('/review', routes.pageReview);
 app.post('/reviewRequest', routes.pageReview);
 app.post('/signInAttempt', routes.pageSignIn);

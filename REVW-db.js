@@ -75,6 +75,11 @@ async  function deleteGame(gamename) {
     await models.Game.deleteOne ({gameName: gamename});
 }
 
+async  function deleteReview(id) {
+    await models.Review.deleteOne ({_id: id});
+
+}
+
 async function getReviews(ID) {
     let filter = {};
     if (ID)
@@ -93,6 +98,7 @@ async function  getUserReviews(username) {
     return await models.Review.find(filter);
 }
 
+module.exports.deleteReview = deleteReview;
 module.exports.getUserReviews = getUserReviews;
 module.exports.updateGame = updateGame;
 module.exports.getReviews = getReviews;

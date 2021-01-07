@@ -335,10 +335,22 @@ async function pageProfile(request,response) {
     let sess = request.session;
     let users = await db.getUsers(sess.user);
     let date = logic.newDate();
+    let test = 2;
+
+    if (request.body.reviewID == null) {
+        test = "1";
+    }
+    else  {
+        test = "0";
+        await db.deleteReview(request.body.reviewID);
+    }
+
 
     let userReviews = await db.getUserReviews(users[0].userName);
 
-    response.render("profile", {"users": users, "sess": sess, "date": date, "reviews": userReviews});
+
+
+    response.render("profile", {"users": users, "sess": sess, "date": date, "reviews": userReviews, "test": test});
 
 }
 
