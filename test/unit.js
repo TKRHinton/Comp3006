@@ -1,6 +1,6 @@
 let chai = require("chai");
 let logic = require("../logic");
-let hash = require("./hashing.js");
+let hash = require("../hashing.js");
 
 suite("Test date fucntion", function() {
 
