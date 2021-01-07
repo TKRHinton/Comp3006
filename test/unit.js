@@ -77,8 +77,11 @@ suite("Test Admin Statisitcs", function() {
         let sum =  logic.adminStatitics(users,games);
 
         chai.assert.equal(sum.userNum, 2, "Numbers do not match");
+        chai.assert.equal(sum.lenNum, 5, "Numbers do not match");
+        chai.assert.equal(sum.adminNum, 1, "Numbers do not match");
+        chai.assert.equal(sum.gameNum, 2, "Numbers do not match");
     });
-    
+
 });
 
 
