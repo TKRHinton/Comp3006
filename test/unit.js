@@ -71,14 +71,14 @@ suite("Test Admin Statisitcs", function() {
 
     test("testing review score function", function() {
 
-        let test = [{reviewScore: 5}, {reviewScore:9}];
+        let users = [{userName: "Harry", admin: false},{userName: "James", admin: true}];
+        let games = [{gameName: "Doom"},{gameName: "COD"}];
 
-        let sum =  logic.newScore(test);
+        let sum =  logic.adminStatitics(users,games);
 
-        chai.assert.equal(sum, "7", "Numbers do not match");
+        chai.assert.equal(sum.userNum, 2, "Numbers do not match");
     });
-
-
+    
 });
 
 
